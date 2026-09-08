@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440">
+  <defs>
+    <linearGradient id="rMain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfa877"/><stop offset="1" stop-color="#9c6a3a"/></linearGradient>
+    <linearGradient id="rGloss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7cba3"/><stop offset="1" stop-color="#cfa877"/></linearGradient>
+  </defs>
+  <ellipse cx="240" cy="402" rx="150" ry="13" fill="#3a2a1c" opacity=".15"/>
+  <rect x="182" y="46" width="10" height="90" rx="5" fill="#5f4631"/>
+  <rect x="288" y="46" width="10" height="90" rx="5" fill="#5f4631"/>
+  <rect x="158" y="34" width="164" height="18" rx="9" fill="#33241a"/>
+  <rect x="170" y="39" width="140" height="7" rx="3.5" fill="#5f4631"/>
+  <path d="M210 132 L240 108 L270 132" fill="none" stroke="#33241a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="140" y="118" width="200" height="264" rx="32" fill="url(#rMain)" stroke="#7f522c" stroke-width="2.4"/>
+  <path d="M240 124 v252" stroke="#8a6238" stroke-width="3"/>
+  <path d="M146 132 a34 34 0 0 1 34 -14 h60 a34 34 0 0 1 34 14" fill="url(#rGloss)" stroke="#8a6238" stroke-width="2"/>
+  <rect x="158" y="106" width="20" height="34" rx="6" fill="#33241a"/>
+  <rect x="302" y="106" width="20" height="34" rx="6" fill="#33241a"/>
+  <rect x="218" y="132" width="44" height="20" rx="6" fill="#4a3423"/>
+  <circle cx="232" cy="142" r="3.4" fill="#d9b98a"/>
+  <circle cx="248" cy="142" r="3.4" fill="#d9b98a"/>
+  <rect x="150" y="176" width="180" height="190" rx="24" fill="none" stroke="#f6e8d2" stroke-width="2" stroke-dasharray="8 8" opacity=".4"/>
+  <circle cx="172" cy="396" r="17" fill="#241a12"/>
+  <circle cx="308" cy="396" r="17" fill="#241a12"/>
+  <circle cx="172" cy="396" r="7" fill="#8a6238"/>
+  <circle cx="308" cy="396" r="7" fill="#8a6238"/>
+  <rect x="150" y="366" width="30" height="8" rx="4" fill="#33241a"/>
+  <rect x="300" y="366" width="30" height="8" rx="4" fill="#33241a"/>
+  <path d="M168 300 q72 26 144 0" fill="none" stroke="#8a6238" stroke-width="2.4" opacity=".8"/>
+</svg>

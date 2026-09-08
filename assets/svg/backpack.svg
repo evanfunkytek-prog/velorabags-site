@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440">
+  <defs>
+    <linearGradient id="bMain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2bd8f"/><stop offset="1" stop-color="#b8834e"/></linearGradient>
+    <linearGradient id="bPkt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c99563"/><stop offset="1" stop-color="#a5703e"/></linearGradient>
+    <linearGradient id="bSide" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d3a878"/><stop offset="1" stop-color="#a97443"/></linearGradient>
+  </defs>
+  <ellipse cx="240" cy="404" rx="172" ry="15" fill="#3a2a1c" opacity=".14"/>
+  <path d="M196 84 C196 52 284 52 284 84" fill="none" stroke="#33241a" stroke-width="16" stroke-linecap="round"/>
+  <path d="M196 84 C196 60 284 60 284 84" fill="none" stroke="#5f4631" stroke-width="7" stroke-linecap="round"/>
+  <path d="M204 96 L276 96 L276 400 L204 400 Z" fill="#4a3423"/>
+  <rect x="120" y="92" width="240" height="300" rx="46" fill="url(#bMain)" stroke="#8a6238" stroke-width="2"/>
+  <rect x="128" y="100" width="224" height="284" rx="39" fill="none" stroke="#fff8ec" stroke-width="2.4" stroke-dasharray="7 7" opacity=".5"/>
+  <rect x="100" y="190" width="42" height="168" rx="20" fill="url(#bSide)" stroke="#8a6238" stroke-width="2"/>
+  <rect x="338" y="190" width="42" height="168" rx="20" fill="url(#bSide)" stroke="#8a6238" stroke-width="2"/>
+  <rect x="134" y="150" width="34" height="90" rx="17" fill="#5f4631"/>
+  <rect x="312" y="150" width="34" height="90" rx="17" fill="#5f4631"/>
+  <path d="M140 300 l12 14 14-18" fill="none" stroke="#f2ddbb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M328 300 l-12 14-14-18" fill="none" stroke="#f2ddbb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="142" y="236" width="196" height="136" rx="32" fill="url(#bPkt)" stroke="#7f522c" stroke-width="2"/>
+  <path d="M142 268 q98 34 196 0" fill="none" stroke="#6e4a28" stroke-width="2.6"/>
+  <rect x="222" y="284" width="36" height="20" rx="6" fill="#33241a"/>
+  <rect x="230" y="300" width="20" height="8" rx="3" fill="#d3a06c"/>
+  <rect x="152" y="244" width="176" height="120" rx="26" fill="none" stroke="#fff8ec" stroke-width="2" stroke-dasharray="6 6" opacity=".45"/>
+  <path d="M186 356 l10 12 22-26" fill="none" stroke="#6e4a28" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+</svg>

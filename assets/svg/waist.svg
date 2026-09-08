@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440">
+  <defs>
+    <linearGradient id="wMain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfbd94"/><stop offset="1" stop-color="#b07a46"/></linearGradient>
+    <linearGradient id="wPkt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c99563"/><stop offset="1" stop-color="#a06c3c"/></linearGradient>
+  </defs>
+  <ellipse cx="240" cy="398" rx="170" ry="13" fill="#3a2a1c" opacity=".13"/>
+  <path d="M96 236 L-10 236" stroke="#4a3423" stroke-width="26" stroke-linecap="round"/>
+  <path d="M384 236 L490 236" stroke="#4a3423" stroke-width="26" stroke-linecap="round"/>
+  <rect x="38" y="210" width="44" height="52" rx="12" fill="#d9b98a" stroke="#a97443" stroke-width="2"/>
+  <rect x="50" y="224" width="10" height="24" rx="4" fill="#a97443"/>
+  <rect x="100" y="168" width="280" height="136" rx="62" fill="url(#wMain)" stroke="#8a6238" stroke-width="2"/>
+  <path d="M124 202 q116 26 232 0" fill="none" stroke="#6e4a28" stroke-width="2.4"/>
+  <rect x="128" y="196" width="224" height="86" rx="34" fill="url(#wPkt)" stroke="#7f522c" stroke-width="1.8"/>
+  <rect x="136" y="204" width="208" height="70" rx="28" fill="none" stroke="#f6e8d2" stroke-width="2" stroke-dasharray="6 6" opacity=".55"/>
+  <rect x="216" y="216" width="48" height="22" rx="7" fill="#33241a"/>
+  <rect x="226" y="232" width="28" height="8" rx="3" fill="#e8dcc8"/>
+  <path d="M108 176 L240 156 L372 176" fill="none" stroke="#f6e8d2" stroke-width="2.2" stroke-dasharray="6 6" opacity=".55"/>
+  <path d="M110 292 L240 308 L370 292" fill="none" stroke="#f6e8d2" stroke-width="2.2" stroke-dasharray="6 6" opacity=".55"/>
+  <rect x="170" y="148" width="140" height="16" rx="8" fill="#4a3423"/>
+  <rect x="188" y="150" width="104" height="4" rx="2" fill="#6e4a28" opacity=".7"/>
+</svg>

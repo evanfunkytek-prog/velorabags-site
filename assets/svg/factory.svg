@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 460">
+  <defs>
+    <linearGradient id="fWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#efe2cc"/><stop offset="1" stop-color="#e2cdab"/></linearGradient>
+    <linearGradient id="fRoof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3423"/><stop offset="1" stop-color="#33241a"/></linearGradient>
+    <linearGradient id="fSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6eee2"/><stop offset="1" stop-color="#fbf7f1"/></linearGradient>
+  </defs>
+  <rect x="0" y="0" width="560" height="460" rx="0" fill="url(#fSky)"/>
+  <circle cx="468" cy="84" r="34" fill="#d3a06c" opacity=".5"/>
+  <path d="M40 170 L80 96 L120 170" fill="none" stroke="#c99563" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/>
+  <path d="M70 150 v-22 M80 150 v-22 M90 150 v-22" stroke="#c99563" stroke-width="2.4" opacity=".6"/>
+  <rect x="40" y="212" width="480" height="190" rx="10" fill="url(#fWall)" stroke="#a98a5f" stroke-width="2"/>
+  <path d="M20 212 h520 l-30 -70 q-10 -22 -34 -22 h-392 q-24 0 -34 22 z" fill="url(#fRoof)"/>
+  <rect x="44" y="128" width="70" height="42" rx="6" fill="#8a6238" opacity=".55"/>
+  <rect x="446" y="128" width="70" height="42" rx="6" fill="#8a6238" opacity=".55"/>
+  <rect x="120" y="122" width="140" height="26" rx="13" fill="#c08a52"/>
+  <text x="190" y="140" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#33241a" letter-spacing="2">BAG ATELIER</text>
+  <rect x="64" y="240" width="86" height="76" rx="10" fill="#c9a87c" stroke="#a98a5f" stroke-width="2"/>
+  <g stroke="#a98a5f" stroke-width="1.6"><path d="M64 264 h86 M64 288 h86 M64 312 h86"/><path d="M84 240 v76 M107 240 v76 M130 240 v76"/></g>
+  <rect x="164" y="240" width="86" height="76" rx="10" fill="#c9a87c" stroke="#a98a5f" stroke-width="2"/>
+  <g stroke="#a98a5f" stroke-width="1.6"><path d="M164 264 h86 M164 288 h86 M164 312 h86"/><path d="M184 240 v76 M207 240 v76 M230 240 v76"/></g>
+  <rect x="264" y="240" width="86" height="76" rx="10" fill="#c9a87c" stroke="#a98a5f" stroke-width="2"/>
+  <g stroke="#a98a5f" stroke-width="1.6"><path d="M264 264 h86 M264 288 h86 M264 312 h86"/><path d="M284 240 v76 M307 240 v76 M330 240 v76"/></g>
+  <path d="M400 330 l60 -90 l56 90 z" fill="#b8834e" stroke="#8a6238" stroke-width="2"/>
+  <path d="M400 330 q-16 24 -34 24 h236 q-18 0 -34 -24" fill="#33241a"/>
+  <path d="M418 330 l44 -66 44 66 z" fill="#8a6238"/>
+  <path d="M448 280 h20 M462 270 v20" stroke="#d3a06c" stroke-width="3" stroke-linecap="round"/>
+  <rect x="380" y="360" width="200" height="42" rx="21" fill="#5f4631"/>
+  <rect x="382" y="362" width="196" height="38" rx="19" fill="#6e4a28" opacity=".6"/>
+  <path d="M468 382 l14 14 26-30" fill="none" stroke="#e8dcc8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

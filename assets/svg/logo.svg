@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232 52">
+  <circle cx="24" cy="26" r="21" fill="#33241a"/>
+  <circle cx="24" cy="26" r="16.5" fill="none" stroke="#d3a06c" stroke-width="1.6" stroke-dasharray="4 5" stroke-linecap="round"/>
+  <path d="M13 36 L24 15 L35 36" fill="none" stroke="#f2ddbb" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19.5 30 h9" stroke="#f2ddbb" stroke-width="2.6" stroke-linecap="round"/>
+  <text x="56" y="33" font-family="Georgia, 'Times New Roman', serif" font-size="25" font-weight="700" fill="#241a12" letter-spacing="3">VELORA</text>
+  <text x="59" y="47" font-family="'Segoe UI', Arial, sans-serif" font-size="8.2" font-weight="700" fill="#9f6c3c" letter-spacing="2.6">BAGS  ·  CUSTOM MANUFACTURER</text>
+</svg>

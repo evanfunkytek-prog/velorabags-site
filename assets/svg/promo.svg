@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440">
+  <defs>
+    <linearGradient id="prMain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2e6cf"/><stop offset="1" stop-color="#dcc39a"/></linearGradient>
+    <linearGradient id="prPanel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3423"/><stop offset="1" stop-color="#33241a"/></linearGradient>
+  </defs>
+  <ellipse cx="240" cy="400" rx="150" ry="14" fill="#3a2a1c" opacity=".12"/>
+  <path d="M184 148 C160 78 320 78 296 148" fill="none" stroke="#b8834e" stroke-width="18" stroke-linecap="round"/>
+  <path d="M128 152 L352 152 L372 372 Q374 386 360 386 L120 386 Q106 386 108 372 Z" fill="url(#prMain)" stroke="#a98a5f" stroke-width="2"/>
+  <path d="M136 158 L344 158" stroke="#b8834e" stroke-width="3"/>
+  <rect x="148" y="192" width="184" height="132" rx="18" fill="url(#prPanel)"/>
+  <rect x="160" y="204" width="160" height="108" rx="12" fill="none" stroke="#c9a87c" stroke-width="1.6" stroke-dasharray="5 6" opacity=".8"/>
+  <text x="240" y="246" text-anchor="middle" font-family="Georgia, serif" font-size="21" font-weight="700" fill="#f2ddbb" letter-spacing="2">YOUR LOGO</text>
+  <text x="240" y="270" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#d3b98d" letter-spacing="3">PRINTED HERE</text>
+  <path d="M240 280 v-22" stroke="#c9a87c" stroke-width="1.4"/>
+  <rect x="118" y="366" width="22" height="14" rx="4" fill="#b8834e"/>
+  <rect x="340" y="366" width="22" height="14" rx="4" fill="#b8834e"/>
+  <path d="M140 340 h200" stroke="#b8834e" stroke-width="1.6" stroke-dasharray="2 6"/>
+</svg>
