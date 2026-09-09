@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440">
+  <defs>
+    <linearGradient id="cMain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8dcc2"/><stop offset="1" stop-color="#c3a879"/></linearGradient>
+    <linearGradient id="cStrap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a97443"/><stop offset="1" stop-color="#7f522c"/></linearGradient>
+  </defs>
+  <ellipse cx="240" cy="400" rx="150" ry="14" fill="#3a2a1c" opacity=".13"/>
+  <path d="M176 158 C148 70 332 70 304 158" fill="none" stroke="#7f522c" stroke-width="20" stroke-linecap="round"/>
+  <path d="M176 158 C152 88 328 88 304 158" fill="none" stroke="url(#cStrap)" stroke-width="11" stroke-linecap="round"/>
+  <path d="M132 158 L348 158 L374 372 Q375 386 361 386 L119 386 Q105 386 106 372 Z" fill="url(#cMain)" stroke="#8a6238" stroke-width="2"/>
+  <rect x="136" y="168" width="208" height="8" rx="4" fill="#b08a55"/>
+  <rect x="136" y="180" width="208" height="5" rx="2" fill="#c9ad79" opacity=".7"/>
+  <path d="M120 380 L360 380" stroke="#8a6238" stroke-width="3"/>
+  <rect x="286" y="206" width="52" height="104" rx="8" fill="#e9ddc6" stroke="#a37c4c" stroke-width="1.8"/>
+  <path d="M300 234 h24 M300 250 h24 M300 266 h16" stroke="#b08a55" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="312" cy="292" r="6" fill="#7f522c"/>
+  <circle cx="312" cy="292" r="2.4" fill="#e9ddc6"/>
+  <path d="M180 220 h64 M180 242 h88 M180 264 h64 M180 286 h88" stroke="#c9ad79" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+  <text x="236" y="342" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#4a3423" letter-spacing="4">VELORA</text>
+  <rect x="112" y="372" width="22" height="16" rx="4" fill="#5f4631"/>
+  <rect x="346" y="372" width="22" height="16" rx="4" fill="#5f4631"/>
+  <rect x="124" y="154" width="232" height="224" rx="18" fill="none" stroke="#fff8ec" stroke-width="2.2" stroke-dasharray="7 7" opacity=".5"/>
+</svg>

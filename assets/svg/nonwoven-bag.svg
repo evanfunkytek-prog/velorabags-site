@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440">
+  <defs>
+    <linearGradient id="nMain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3cba2"/><stop offset="1" stop-color="#b98a50"/></linearGradient>
+    <linearGradient id="nTrim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8f6a3e"/><stop offset="1" stop-color="#5f4631"/></linearGradient>
+  </defs>
+  <ellipse cx="240" cy="400" rx="150" ry="14" fill="#3a2a1c" opacity=".13"/>
+  <path d="M150 150 Q240 84 330 150" fill="none" stroke="url(#nTrim)" stroke-width="26" stroke-linecap="round"/>
+  <path d="M150 150 Q240 96 330 150" fill="none" stroke="#efe2cc" stroke-width="14" stroke-linecap="round"/>
+  <path d="M132 210 L348 210 L360 372 Q360 386 346 386 L134 386 Q120 386 120 372 Z" fill="url(#nMain)" stroke="#8a6238" stroke-width="2"/>
+  <path d="M132 210 L348 210" stroke="#6e4a28" stroke-width="4"/>
+  <path d="M120 240 L360 240" stroke="#caa06b" stroke-width="2" opacity=".8"/>
+  <path d="M120 300 L360 300" stroke="#caa06b" stroke-width="2" opacity=".8"/>
+  <circle cx="240" cy="292" r="44" fill="#f7f0e4" stroke="#a5703e" stroke-width="2"/>
+  <path d="M240 258 a24 24 0 1 0 17 7" fill="none" stroke="#9f6c3c" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="228" cy="286" r="3.4" fill="#9f6c3c"/>
+  <circle cx="252" cy="286" r="3.4" fill="#9f6c3c"/>
+  <text x="240" y="306" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5f4631" letter-spacing="2">REUSE</text>
+  <path d="M128 346 h224" stroke="#fff8ec" stroke-width="2" stroke-dasharray="6 6" opacity=".7"/>
+  <rect x="120" y="206" width="240" height="180" rx="18" fill="none" stroke="#fff8ec" stroke-width="2.2" stroke-dasharray="7 7" opacity=".5"/>
+</svg>

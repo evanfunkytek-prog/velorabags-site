@@ -13,18 +13,20 @@ python -m http.server 8000
 3. 上线：把整个文件夹上传到任意静态托管（nginx / 对象存储 / GitHub Pages）。
 
 ## 页面结构
-- 首页 `index.html`；产品总览 `products.html`（12 款分类 + 前端筛选）
-- 产品详情 `products/`：backpack / handbag-tote / crossbody-sling / travel-trolley / laptop-briefcase / duffel-weekender
+- 首页 `index.html`（含环保袋品类区块 Sustainable Totes & Packaging）；产品总览 `products.html`（16 款产品卡 + 前端筛选）
+- 产品详情 `products/`：主包袋 6 款（backpack / handbag-tote / crossbody-sling / travel-trolley / laptop-briefcase / duffel-weekender）+ 环保袋 4 款（jute-bags / canvas-bags / non-woven-bags / woven-pp-bags）
 - 公司页：`about.html`、`factory-tour.html`、`certifications.html`、`industries.html`
-- 转化页：`quote.html`（询盘表单）、`contact.html`；博客 `blog.html` + `blog/` 两篇文章；`404.html`
+- 转化页：`quote.html`（询盘表单）、`contact.html`；博客 `blog.html` + `blog/` 四篇文章（backpack-materials-guide / qc-checklist / eco-bag-material-guide / eco-bag-printing-qc）；`404.html`
+- 内部资料：`research/`（环保袋/编织袋竞品调研，本地参考用；已由 `.gitignore` 排除，不进公开仓库）
 - 资产：`assets/css/style.css`（设计系统）、`assets/js/main.js`（导航/筛选/FAQ/表单）、`assets/svg/`（全部自绘矢量插画）
 
-## 待替换占位信息
-- 邮箱/域名：`sales@velorabags.com`（可在各页页脚与表单 `data-mailto` 中替换）
-- WhatsApp：`+86 138 0000 0000`（`wa.me/8613800000000`）
-- 地址：广州花都区狮岭镇华胜路 8 号（占位）
-- 认证编号、报价、MOQ（300/500/1000 pcs）、交期等均为可编辑示例
-- 产品图为自绘 SVG 占位：将 `assets/svg/*.svg` 同路径替换为实拍图即可，尺寸比例参考 `480x440`
+## 上线配置（2026-09-09 已更新）
+- 目标域名：`verlorabags.com`（GitHub → Cloudflare Pages 自动部署）
+- 询盘邮箱：`evan.funkytek@gmail.com`（全站替换原占位 sales@velorabags.com，含表单 data-mailto）
+- WhatsApp：`+86 137 9827 5895`（`wa.me/8613798275895`）
+- 地址：No. 8 Huasheng Rd, Shiling, Huadu District, Guangzhou, China
+- 产品图：六大主类目已启用 `assets/img/*.jpg`（AI 生成风格化产品示意，统一暖奶油底、无品牌标识）；拿到自家产品实拍图后可直接同路径替换
+- 说明：`Support@velorabags.com` 为用户提供的备用邮箱，用途待确认，暂未写入页面；认证编号、报价、MOQ（300/500/1000 pcs）、交期仍为可编辑示例数据
 
 ## 定制说明
 - 配色与字体：`assets/css/style.css` 顶部 `:root` 变量（咖啡棕/驼色/奶油色）

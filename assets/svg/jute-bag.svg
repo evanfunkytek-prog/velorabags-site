@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440">
+  <defs>
+    <linearGradient id="jMain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9cf9d"/><stop offset="1" stop-color="#c1914f"/></linearGradient>
+    <linearGradient id="jStrap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b07d44"/><stop offset="1" stop-color="#7f522c"/></linearGradient>
+    <pattern id="jWeave" width="14" height="14" patternUnits="userSpaceOnUse">
+      <path d="M0 7 L14 7" stroke="#8a5c2e" stroke-width="1.4" opacity=".28"/>
+      <path d="M7 0 L7 14" stroke="#8a5c2e" stroke-width="1.4" opacity=".28"/>
+    </pattern>
+    <clipPath id="jClip"><path d="M136 152 L344 152 L366 370 Q367 384 353 384 L127 384 Q113 384 114 370 Z"/></clipPath>
+  </defs>
+  <ellipse cx="240" cy="400" rx="150" ry="14" fill="#3a2a1c" opacity=".13"/>
+  <path d="M184 152 C160 74 320 74 296 152" fill="none" stroke="#7f522c" stroke-width="20" stroke-linecap="round"/>
+  <path d="M184 152 C162 92 318 92 296 152" fill="none" stroke="url(#jStrap)" stroke-width="11" stroke-linecap="round"/>
+  <path d="M136 152 L344 152 L366 370 Q367 384 353 384 L127 384 Q113 384 114 370 Z" fill="url(#jMain)" stroke="#8a6238" stroke-width="2"/>
+  <path d="M136 152 L344 152 L366 370 Q367 384 353 384 L127 384 Q113 384 114 370 Z" fill="url(#jWeave)" clip-path="url(#jClip)"/>
+  <path d="M144 168 L336 168" stroke="#6e4a28" stroke-width="3"/>
+  <rect x="142" y="176" width="196" height="6" rx="3" fill="#a5703e"/>
+  <path d="M122 150 L144 150 L138 128 L128 128 Z" fill="#9f6c3c"/>
+  <path d="M358 150 L336 150 L342 128 L352 128 Z" fill="#9f6c3c"/>
+  <path d="M170 300 Q240 270 310 300" fill="none" stroke="#7f522c" stroke-width="2.2" opacity=".6"/>
+  <text x="240" y="350" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#4a3423" letter-spacing="4">JUTE</text>
+  <rect x="120" y="160" width="240" height="214" rx="20" fill="none" stroke="#fff8ec" stroke-width="2.2" stroke-dasharray="7 7" opacity=".5"/>
+</svg>

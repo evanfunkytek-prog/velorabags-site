@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440">
+  <defs>
+    <linearGradient id="pMain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4d5b8"/><stop offset="1" stop-color="#bd9a66"/></linearGradient>
+    <pattern id="pWeave" width="12" height="12" patternUnits="userSpaceOnUse">
+      <path d="M0 6 L12 6" stroke="#6e4a28" stroke-width="1.6" opacity=".3"/>
+      <path d="M6 0 L6 12" stroke="#6e4a28" stroke-width="1.6" opacity=".3"/>
+    </pattern>
+    <clipPath id="pClip"><rect x="140" y="96" width="200" height="284" rx="10"/></clipPath>
+  </defs>
+  <ellipse cx="240" cy="400" rx="140" ry="14" fill="#3a2a1c" opacity=".13"/>
+  <path d="M148 106 L332 106 L352 380 Q352 392 340 392 L140 392 Q128 392 128 380 Z" fill="url(#pMain)" stroke="#8a6238" stroke-width="2"/>
+  <path d="M148 106 L332 106 L352 380 Q352 392 340 392 L140 392 Q128 392 128 380 Z" fill="url(#pWeave)" clip-path="url(#pClip)"/>
+  <path d="M136 100 L344 100" stroke="#7f522c" stroke-width="6" stroke-linecap="round"/>
+  <path d="M132 106 h216 M128 116 h224" stroke="#6e4a28" stroke-width="3"/>
+  <path d="M156 158 L324 158 L330 236 L330 300 L320 330 L160 330 L150 300 L150 236 Z" fill="#f7f0e4" stroke="#8a6238" stroke-width="1.8"/>
+  <path d="M162 170 h156 M162 184 h138 M162 198 h150 M162 212 h120" stroke="#caa06b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="240" cy="260" r="20" fill="none" stroke="#9f6c3c" stroke-width="2.4" stroke-dasharray="3 4"/>
+  <path d="M233 260 l5 5 9-10" fill="none" stroke="#9f6c3c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="240" y="312" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#4a3423" letter-spacing="3">VELORA PP</text>
+  <path d="M156 96 v-10 M324 96 v-10" stroke="#5f4631" stroke-width="6" stroke-linecap="round"/>
+  <rect x="124" y="92" width="232" height="300" rx="16" fill="none" stroke="#fff8ec" stroke-width="2.2" stroke-dasharray="7 7" opacity=".5"/>
+</svg>

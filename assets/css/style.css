@@ -261,3 +261,7 @@ tr:last-child td{border-bottom:0}
   .page-hero{padding:56px 0 48px}
 }
 @media(max-width:420px){.spec-grid,.steps{grid-template-columns:1fr}}
+
+/* Raster product photos (added 2026-09) */
+.card-media img,
+.detail-media img{object-fit:cover}
