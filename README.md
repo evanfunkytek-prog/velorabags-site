@@ -25,8 +25,9 @@ python -m http.server 8000
 - 询盘邮箱：`evan.funkytek@gmail.com`（全站替换原占位 sales@velorabags.com，含表单 data-mailto）
 - WhatsApp：`+86 137 9827 5895`（`wa.me/8613798275895`）
 - 地址：No. 8 Huasheng Rd, Shiling, Huadu District, Guangzhou, China
+- 联系方式：主询盘 `evan.funkytek@gmail.com`（页脚/表单/全站 mailto）；售后支持 `Support@velorabags.com`（contact.html 展示卡）
 - 产品图：六大主类目已启用 `assets/img/*.jpg`（AI 生成风格化产品示意，统一暖奶油底、无品牌标识）；拿到自家产品实拍图后可直接同路径替换
-- 说明：`Support@velorabags.com` 为用户提供的备用邮箱，用途待确认，暂未写入页面；认证编号、报价、MOQ（300/500/1000 pcs）、交期仍为可编辑示例数据
+- SEO：`sitemap.xml`（23 URL，www 为规范域）+ `robots.txt` 已随仓库部署；认证编号、报价、MOQ（300/500/1000 pcs）、交期仍为可编辑示例数据
 
 ## 定制说明
 - 配色与字体：`assets/css/style.css` 顶部 `:root` 变量（咖啡棕/驼色/奶油色）
