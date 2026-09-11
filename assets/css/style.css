@@ -499,34 +499,36 @@ img{object-fit:contain!important;max-width:100%!important;height:auto!important}
 .footer-brand img{width:auto!important;max-width:230px!important;height:42px!important}
 
 /* ============================================================
-   WhatsApp Floating Component - v3.0 Final
+   WhatsApp Floating Component - v4.0 (Custom Icon Optimization)
    ============================================================ */
 .wa-float {
   position: fixed !important;
-  width: 75px !important;
-  height: 75px !important;
-  bottom: 35px !important;
-  right: 35px !important;
+  width: 85px !important;
+  height: 85px !important;
+  bottom: 30px !important;
+  right: 30px !important;
   z-index: 99999 !important;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  background: #ffffff !important;
+  border-radius: 50% !important;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.18) !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  overflow: hidden !important;
 }
 
 .wa-float img {
   width: 100% !important;
   height: 100% !important;
-  border-radius: 50% !important;
-  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.45) !important;
-  object-fit: cover !important;
-  border: 2px solid #ffffff !important;
+  object-fit: contain !important;
+  transform: scale(1.1) !important; /* 适度放大图标 */
 }
 
 .wa-float::before {
   content: "Free Sample & Quick Quote" !important;
   position: absolute !important;
-  right: 90px !important;
+  right: 95px !important;
   background: #ffffff !important;
   color: #315522 !important;
   padding: 10px 18px !important;
@@ -539,12 +541,12 @@ img{object-fit:contain!important;max-width:100%!important;height:auto!important}
   visibility: hidden !important;
   transform: translateX(15px) !important;
   transition: all 0.3s ease !important;
-  border: 2px solid #315522 !important;
+  border: 1px solid #eee !important;
   pointer-events: none !important;
 }
 
 .wa-float:hover {
-  transform: scale(1.15) !important;
+  transform: scale(1.1) !important;
 }
 
 .wa-float:hover::before {
@@ -555,12 +557,11 @@ img{object-fit:contain!important;max-width:100%!important;height:auto!important}
 
 @media (max-width: 768px) {
   .wa-float {
-    width: 65px !important;
-    height: 65px !important;
-    bottom: 25px !important;
-    right: 25px !important;
+    width: 70px !important;
+    height: 70px !important;
+    bottom: 20px !important;
+    right: 20px !important;
   }
-  .wa-float::before { display: none !important; }
 }
 
 @media (max-width: 768px) {
