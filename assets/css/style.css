@@ -460,6 +460,7 @@ img{object-fit:contain!important;max-width:100%!important;height:auto!important}
    Velora Bags - v2.3 Final Button Polishing
    ============================================================ */
 .btn-primary, 
+.site-nav a.btn-primary,
 .site-nav .btn-primary,
 .hero-actions .btn-primary {
   background-color: var(--green) !important;
