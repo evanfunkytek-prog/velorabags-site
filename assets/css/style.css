@@ -338,16 +338,32 @@ body{background:#fff}
 .hero-point{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink-700);font-size:.95rem}
 .hero-visual-container{position:relative;display:grid;grid-template-columns:1fr 220px;gap:20px;align-items:start}
 /* ============================================================
-   Velora Bags - Ultimate Logo & Layout Lock
+   Velora Bags - Hero Banner Final Refinement (Fidelity First)
    ============================================================ */
-body .hero-copy img[src*="logo.svg"], 
-header.site-header .brand img,
-footer.site-footer .footer-brand img {
+.hero-visual img, 
+body .hero-visual img, 
+#site-header + main .hero-visual img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  /* 使用 cover 模式实现“变焦”放大效果，同时隐藏多余背景 */
+  object-fit: cover !important;
+  /* 将视觉重心锁定在右侧的产品主体上（约 85% 位置） */
+  object-position: 85% center !important;
+  border-radius: 28px !important;
+  box-shadow: 0 40px 80px rgba(49, 85, 34, 0.12) !important;
+  transform: perspective(1000px) rotateY(-8deg) !important;
   display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  max-width: none !important;
+  background: #f1ece3 !important;
 }
+
+.hero-visual {
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
+}
+
 
 body .hero-copy img[src*="logo.svg"] {
   height: 48px !important;
