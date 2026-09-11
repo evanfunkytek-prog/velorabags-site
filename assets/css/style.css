@@ -338,31 +338,31 @@ body{background:#fff}
 .hero-point{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink-700);font-size:.95rem}
 .hero-visual-container{position:relative;display:grid;grid-template-columns:1fr 220px;gap:20px;align-items:start}
 /* ============================================================
-   Logo & Header Layout Fixes
+   Velora Bags - Ultimate Logo & Layout Lock
    ============================================================ */
-.hero-copy > img {
-  height: 48px !important;
-  width: auto !important;
-  margin-bottom: 22px !important;
-  display: block !important;
-  object-fit: contain !important;
-}
-
-.brand img, .site-header .brand img {
-  height: 42px !important;
-  width: 210px !important;
+body .hero-copy img[src*="logo.svg"], 
+header.site-header .brand img,
+footer.site-footer .footer-brand img {
   display: block !important;
   opacity: 1 !important;
   visibility: visible !important;
-  min-width: 210px !important;
-  max-width: 210px !important;
+  max-width: none !important;
+}
+
+body .hero-copy img[src*="logo.svg"] {
+  height: 48px !important;
+  width: 240px !important;
+  margin-bottom: 22px !important;
+}
+
+header.site-header .brand img {
+  height: 42px !important;
+  width: 210px !important;
 }
 
 .site-header .brand {
-  display: flex !important;
+  min-width: 210px !important;
   width: 210px !important;
-  height: 42px !important;
-  flex: none !important;
 }
 .hero-visual img, 
 body .hero-visual img, 
