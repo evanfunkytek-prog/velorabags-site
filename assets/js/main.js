@@ -88,24 +88,74 @@
       });
     });
 
-    // Inquiry forms -> mailto with prefilled body
+    // Inquiry forms: POST to a real endpoint; fall back to email so no lead is lost
+    var SKIP_FIELDS=['_gotcha','_subject','_next'];
+    function fieldLines(form){
+      var lines=[];
+      form.querySelectorAll('[name]').forEach(function(f){
+        if(SKIP_FIELDS.indexOf(f.name)>-1) return;
+        var v=(f.value||'').trim();
+        if(!v) return;
+        var labelEl=f.id?form.querySelector('label[for="'+f.id+'"]'):null;
+        lines.push((labelEl?labelEl.textContent.trim():f.name)+': '+v);
+      });
+      return lines;
+    }
+    function setStatus(form,kind,html){
+      var box=form.querySelector('.form-status');
+      if(!box) return;
+      box.className='form-status'+(kind?' is-'+kind:'');
+      box.innerHTML=html;
+      box.hidden=false;
+    }
+    function mailtoFallback(form,note){
+      var email=form.getAttribute('data-mailto');
+      var subject=form.getAttribute('data-subject')||'RFQ from website';
+      var lines=fieldLines(form);
+      if(!lines.length) return;
+      var body=lines.join('\n')+'\n\nSent from '+location.href;
+      window.location.href='mailto:'+email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+      setStatus(form,'error',note+' You can also email <a href="mailto:'+email+'">'+email+'</a> directly.');
+    }
     document.querySelectorAll('form[data-mailto]').forEach(function(form){
       form.addEventListener('submit',function(ev){
         ev.preventDefault();
-        var email=form.getAttribute('data-mailto');
-        var subject=form.getAttribute('data-subject')||'RFQ from website';
-        var lines=[];
-        var skip=['_subject','_next'];
+        var trap=form.querySelector('[name="_gotcha"]');
+        if(trap&&trap.value) return;
+        var lines=fieldLines(form);
+        if(!lines.length){ setStatus(form,'error','Please fill in the required fields before sending.'); return; }
+        var btn=form.querySelector('button[type=submit]');
+        var btnText=btn?btn.textContent:'';
+        var endpoint=form.getAttribute('data-endpoint');
+        if(!endpoint){
+          mailtoFallback(form,'Your email app should now open with the request ready to send.');
+          return;
+        }
+        var payload={subject:form.getAttribute('data-subject')||'RFQ from website',
+                     fields:{}, message:lines.join('\n'), page:location.href,
+                     referrer:document.referrer||'', sentAt:new Date().toISOString()};
         form.querySelectorAll('[name]').forEach(function(f){
-          if(skip.indexOf(f.name)>-1) return;
-          var v=f.value.trim();
-          if(!v) return;
-          var labelEl=form.querySelector('label[for="'+f.id+'"]');
-          var label=labelEl?labelEl.textContent.trim():f.name;
-          lines.push(label+': '+v);
+          if(SKIP_FIELDS.indexOf(f.name)>-1) return;
+          if((f.value||'').trim()) payload.fields[f.name]=f.value.trim();
         });
-        var body=lines.join('\n')+'\n\nSent from '+location.href;
-        window.location.href='mailto:'+email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+        setStatus(form,'','Sending…');
+        if(btn){ btn.disabled=true; btn.textContent='Sending…'; }
+        form.classList.add('is-sending');
+        var done=function(ok,note){
+          form.classList.remove('is-sending');
+          if(btn){ btn.disabled=false; btn.textContent=btnText; }
+          if(ok){
+            form.reset();
+            setStatus(form,'ok',note);
+          } else {
+            mailtoFallback(form,note);
+          }
+        };
+        fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},
+                        body:JSON.stringify(payload)})
+          .then(function(r){ return r.ok?r.json().catch(function(){return {}}):Promise.reject(new Error('HTTP '+r.status)); })
+          .then(function(){ done(true,'Thanks — your request is in. We reply within one business day, usually with a few questions that sharpen the quote.'); })
+          .catch(function(){ done(false,'We could not send that automatically.'); });
       });
     });
 

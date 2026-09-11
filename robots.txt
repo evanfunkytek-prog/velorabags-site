@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
-Sitemap: https://www.velorabags.com/sitemap.xml
+Sitemap: https://www.verlorabags.com/sitemap.xml

@@ -22,7 +22,8 @@ def main_image(s):
         return m.group(1)
     body = s.split("<body", 1)[-1]
     for src in IMG_RE.findall(body):
-        if "assets/img/" in src and "wa-float" not in src and "logo" not in src:
+        if ("assets/img/" in src and "wa-" not in src and "logo" not in src
+                and ".svg" not in src.lower()):
             return src
     return "assets/img/hero-bags-full.webp"
 
@@ -103,6 +104,10 @@ def rewrite_chrome(indexable):
         d = DESC_RE.search(s)
         desc = plain(d.group(1)) if d else ""
         img = asset_url(main_image(s))
+        if relpath.startswith("blog/") and relpath != "blog.html":
+            share = C.BLOG_IMAGES.get(relpath.split("/", 1)[1])
+            if share:
+                img = asset_url(share)
         noindex = relpath == "404.html"
         ld = None
         if relpath == "index.html":
@@ -131,6 +136,8 @@ def rewrite_chrome(indexable):
         elif relpath.startswith("blog/") and relpath != "blog.html":
             ld = {"@context": "https://schema.org", "@type": "Article",
                   "headline": title, "description": desc, "image": img,
+                  "datePublished": C.BLOG_DATES.get(relpath.split("/", 1)[1], C.BUILD_DATE),
+                  "dateModified": C.BUILD_DATE,
                   "mainEntityOfPage": abs_url(relpath),
                   "publisher": org_node(),
                   "author": {"@type": "Organization", "name": BRAND}}

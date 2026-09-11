@@ -34,6 +34,13 @@ def build_package():
         shutil.copy2(rp(*relpath.split("/")), dst)
     for name in ("robots.txt", "sitemap.xml"):
         shutil.copy2(rp(name), os.path.join(PKG, name))
+    # Cloudflare Pages Functions (lead intake endpoint) ship with the site
+    fn = rp("functions")
+    if os.path.isdir(fn):
+        shutil.copytree(fn, os.path.join(PKG, "functions"))
+    for name in ("_headers", "_redirects"):
+        if os.path.isfile(rp(name)):
+            shutil.copy2(rp(name), os.path.join(PKG, name))
     # only referenced assets
     used = used_assets()
     kept = 0

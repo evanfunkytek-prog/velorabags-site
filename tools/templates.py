@@ -175,6 +175,15 @@ body{background:#fff}
 @media(max-width:520px){
   .trust-grid{grid-template-columns:1fr}
 }
+
+/* ---------- inquiry form feedback ---------- */
+.hp-field{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.form-status{margin-top:18px;padding:16px 18px;border-radius:10px;font-size:.92rem;font-weight:650;line-height:1.55}
+.form-status[hidden]{display:none}
+.form-status.is-ok{background:#eef5e9;border:1px solid #cfe0c3;color:#2c4a20}
+.form-status.is-error{background:#fdf1ee;border:1px solid #f0cfc7;color:#8a2f1e}
+.form-status a{color:inherit;text-decoration:underline}
+form.is-sending button[type=submit]{opacity:.7;cursor:progress}
 """
 
 
@@ -281,7 +290,7 @@ def footer(p):
   <div class="footer-bottom">
     <div class="container">
       <span>&copy; <span data-year>2026</span> {brand} Co., Ltd. All rights reserved.</span>
-      <span><a href="{p}index.html">Home</a> &middot; <a href="{p}products.html">Products</a> &middot; <a href="{p}quote.html">Quote</a> &middot; <a href="{p}sitemap.xml">Sitemap</a></span>
+      <span><a href="{p}index.html">Home</a> &middot; <a href="{p}products.html">Products</a> &middot; <a href="{p}quote.html">Quote</a> &middot; <a href="{p}privacy.html">Privacy</a> &middot; <a href="{p}terms.html">Terms</a> &middot; <a href="{p}sitemap.xml">Sitemap</a></span>
     </div>
   </div>
 </footer>

@@ -11,7 +11,7 @@ PHONE = C.PHONE
 WA = C.WA
 ADDRESS = C.ADDRESS
 HOURS = C.HOURS
-CSS_VERSION = "2.0"
+CSS_VERSION = "2.3"
 LOGO_VERSION = "1.2"
 SKIP_DIRS = {".git", "research", "tools", "package", "dist", "node_modules"}
 

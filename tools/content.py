@@ -6,13 +6,38 @@ page-specific blurb, so the whole catalog stays structurally identical.
 """
 
 BRAND = "Velora Bags"
-SITE = "https://www.velorabags.com"
+SITE = "https://www.verlorabags.com"
 EMAIL = "evan.funkytek@gmail.com"
-SUPPORT_EMAIL = "support@velorabags.com"
+SUPPORT_EMAIL = "support@verlorabags.com"
 PHONE = "+86 137 9827 5895"
-WA = "https://wa.me/8613798275895"
+WA = ("https://wa.me/8613798275895"
+      "?text=Hi,%20I%27m%20interested%20in%20your%20custom%20bags,"
+      "%20please%20send%20catalog%20and%20price%20list.")
 ADDRESS = "No. 8 Huasheng Rd, Shiling, Huadu District, Guangzhou, China"
 HOURS = "Mon-Sat 8:30-18:00 (GMT+8)"
+
+# First publication date per article, used for Article schema (editable).
+BLOG_DATES = {
+    "how-to-choose-bag-fabrics.html": "2026-09-11",
+    "bag-factory-qc-checklist.html": "2026-09-08",
+    "eco-reusable-bag-trends-2026.html": "2026-09-05",
+    "qc-checklist.html": "2026-09-08",
+    "eco-bag-material-guide.html": "2026-09-10",
+    "eco-bag-printing-qc.html": "2026-09-09",
+    "backpack-materials-guide.html": "2026-09-07",
+}
+BUILD_DATE = "2026-09-11"
+
+# Share image (og:image / Article image) per article, matching the blog index cards.
+BLOG_IMAGES = {
+    "how-to-choose-bag-fabrics.html": "assets/img/why-materials.webp",
+    "bag-factory-qc-checklist.html": "assets/img/why-production.webp",
+    "eco-reusable-bag-trends-2026.html": "assets/img/solution-grocery.webp",
+    "eco-bag-material-guide.html": "assets/img/cat-jute.webp",
+    "eco-bag-printing-qc.html": "assets/img/solution-promo.webp",
+    "qc-checklist.html": "assets/img/cat-nonwoven.webp",
+    "backpack-materials-guide.html": "assets/img/cat-oxford-fabric.webp",
+}
 
 # key -> specification block. Fields feed the spec table and the copy blocks.
 CATS = {
