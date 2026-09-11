@@ -35,8 +35,8 @@ h1{font-size:clamp(2.5rem,5.2vw,4.6rem);margin-bottom:20px}
 }
 .trust-icon{width:46px;height:46px;border:1px solid #cbd7c5;border-radius:50%;color:var(--green);font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;flex:none}
 .trust-copy{display:flex;flex-direction:column;line-height:1.2}
-.trust-copy strong{font-size:14px;color:var(--ink)}
-.trust-copy small{font-size:11px;color:var(--muted-light)}
+.trust-copy strong{display:block;font-size:14px;color:var(--ink);margin-bottom:2px}
+.trust-copy small{display:block;font-size:11px;color:var(--muted-light);white-space:nowrap}
 
 /* Categories Editorial */
 .section{padding:100px 0}
