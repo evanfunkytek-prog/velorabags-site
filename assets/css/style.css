@@ -432,6 +432,59 @@ body{background:#fff}
   .footer-main{grid-template-columns:1fr;gap:36px;padding:52px 0 36px}
   .product-fact-row{grid-template-columns:22px 78px 1fr;font-size:.88rem}
 }
-@media(max-width:520px){
-  .trust-grid{grid-template-columns:1fr}
+/* ============================================================
+   v2.2 - FINAL UI COMPLIANCE & STRETCH FIXES
+   ============================================================ */
+img{object-fit:contain!important;max-width:100%!important;height:auto!important}
+.category-media img, .detail-media img, .hero-visual img{
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:1/1;
+  background:#f1ece3;
+  border-radius:12px;
+  display:block
+}
+
+/* Fix Giant Icons in Cards */
+.category-card svg, .spec-card svg, .contact-card svg{width:48px!important;height:48px!important}
+.site-header svg{width:20px!important;height:20px!important}
+
+/* Footer Logo Lock */
+.footer-brand img{width:auto!important;max-width:230px!important;height:42px!important}
+
+/* WhatsApp Ultimate Size */
+.wa-float{width:140px!important;height:140px!important;bottom:30px!important;right:30px!important}
+.wa-float img{width:100%!important;height:100%!important}
+
+/* ============================================================
+   Velora Bags - v2.3 Final Button Polishing
+   ============================================================ */
+.btn-primary, 
+.site-nav .btn-primary,
+.hero-actions .btn-primary {
+  background-color: var(--green) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 8px 20px rgba(49, 85, 34, 0.25) !important;
+  text-decoration: none !important;
+}
+
+.btn-primary:hover,
+.site-nav .btn-primary:hover,
+.hero-actions .btn-primary:hover {
+  background-color: var(--green-hover) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 28px rgba(49, 85, 34, 0.35) !important;
+}
+
+.btn-secondary {
+  background-color: transparent !important;
+  color: var(--green) !important;
+  border: 2px solid var(--green) !important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--green) !important;
+  color: #ffffff !important;
 }
