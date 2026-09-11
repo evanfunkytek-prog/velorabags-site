@@ -1,5 +1,5 @@
 /**
- * Lead intake endpoint for the Velora Bags inquiry forms.
+ * Lead intake endpoint for the Verlora Bags inquiry forms.
  *
  * Deployed automatically by Cloudflare Pages (any file under /functions).
  * The front end POSTs JSON to /api/quote and falls back to email if this
@@ -81,7 +81,7 @@ export async function onRequestPost(context) {
   };
 
   const to = env.LEAD_TO || env.EMAIL || "evan.funkytek@gmail.com";
-  const from = env.LEAD_FROM || "Velora Bags Website <onboarding@resend.dev>";
+  const from = env.LEAD_FROM || "Verlora Bags Website <onboarding@resend.dev>";
 
   try {
     if (env.RESEND_API_KEY) {
