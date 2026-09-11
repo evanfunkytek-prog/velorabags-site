@@ -36,16 +36,20 @@ h2{font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-0.04em}
 .site-nav > a:hover,.site-nav > a.active{color:var(--green);background:var(--sand)}
 
 .hero{padding:80px 0;background:var(--white)}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.hero-copy h1{margin-bottom:24px}
-.hero-copy .lead{margin-bottom:32px}
-.hero-actions{display:flex;gap:16px}
-.hero-visual img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow)}
+.hero-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:40px;align-items:center;padding:60px 0}
+.hero-check-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 24px;margin:24px 0 32px}
+.hero-check-item{display:flex;align-items:center;gap:8px;font-size:0.88rem;font-weight:700;color:var(--ink);letter-spacing:0.02em}
+.hero-check-item svg{width:18px;height:18px;stroke:var(--green);stroke-width:3}
+.reply-target{display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--muted);margin-top:20px;font-weight:500}
+.reply-target svg{width:16px;height:16px}
 
-.trust-strip{background:var(--sand);padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.trust-inner{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;font-weight:700;font-size:0.85rem;color:var(--ink);text-transform:uppercase;letter-spacing:0.05em}
-.trust-inner span{display:flex;align-items:center;gap:8px}
-.trust-inner span::before{content:"\2022";color:var(--green);font-size:1.2rem}
+.trust-strip{background:var(--white);padding:24px 0;border-top:1px solid var(--line);border-bottom:0}
+.trust-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:14px}
+.trust-icon{width:48px;height:44px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;color:var(--green);border:1px solid var(--line);flex:none}
+.trust-copy{display:flex;flex-direction:column;gap:2px}
+.trust-copy b{font-size:0.9rem;color:var(--ink);font-family:var(--font-body)}
+.trust-copy span{font-size:0.75rem;color:var(--muted);font-weight:500}
 
 .section{padding:100px 0}
 .section-head{text-align:center;margin-bottom:60px}
