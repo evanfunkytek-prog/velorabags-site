@@ -337,15 +337,28 @@ body{background:#fff}
 .hero-copy h1{font-size:clamp(2.2rem,4.4vw,3.4rem);margin:14px 0 20px}
 .hero-point{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink-700);font-size:.95rem}
 .hero-visual-container{position:relative;display:grid;grid-template-columns:1fr 220px;gap:20px;align-items:start}
-.hero-visual img {
+/* ============================================================
+   Velora Bags - Hero Visual REBORN (Final Impact Fix)
+   ============================================================ */
+.hero-visual img, 
+body .hero-visual img, 
+#site-header + main .hero-visual img {
   width: 100% !important;
   height: 100% !important;
+  min-height: 100% !important;
   object-fit: cover !important;
-  object-position: 85% center !important;
-  border-radius: 24px !important;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.12) !important;
-  transform: perspective(1000px) rotateY(-5deg) !important;
+  object-position: 80% center !important;
+  border-radius: 28px !important;
+  box-shadow: 0 40px 80px rgba(49, 85, 34, 0.15) !important;
+  transform: perspective(800px) rotateY(-10deg) !important;
   display: block !important;
+  background: transparent !important;
+}
+
+.hero-visual {
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
 }
 .hero-sidebar{display:flex;flex-direction:column;gap:12px}
 .sidebar-item{background:#fff;padding:15px;border-radius:10px;border:1px solid var(--line);display:flex;align-items:center;gap:12px;transition:all .2s}
