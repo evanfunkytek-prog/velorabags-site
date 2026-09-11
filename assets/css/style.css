@@ -62,15 +62,25 @@ img{max-width:100%;height:auto;display:block;object-fit:contain}
 .menu-link:hover{background:#f0f4ee;color:var(--green)}
 .menu-link svg{width:20px!important;height:20px!important;flex:none;stroke-width:2}
 
-/* Grid & Layout Reconstruction */
-.section{padding:100px 0}
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-.ind-grid, .spec-grid, .cert-grid, .contact-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+/* Grid Reconstruction - FINAL LOCK */
+.product-grid, .ind-grid, .spec-grid, .cert-grid, .contact-cards{display:grid!important;grid-template-columns:repeat(3,1fr);gap:30px}
 
-/* Cards */
-.category-card, .card, .ind-card, .spec-card, .contact-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:all .3s}
+/* Card Visuals */
+.category-card, .spec-card, .contact-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:all .3s;display:flex;flex-direction:column}
 .category-media{background:#f1ece3;aspect-ratio:1.15;padding:15px;display:flex;align-items:center;justify-content:center}
-.category-body, .card-body{padding:22px;display:flex;justify-content:space-between;align-items:center}
+.category-body{padding:22px;display:flex;justify-content:space-between;align-items:center;background:#fff}
+
+/* Mobile & Menu Fixes */
+@media(max-width:1024px){
+  .product-grid, .ind-grid, .spec-grid, .cert-grid, .contact-cards{grid-template-columns:repeat(2,1fr)}
+  .site-nav{display:flex;gap:15px}
+  .nav-item{font-size:13px}
+}
+@media(max-width:768px){
+  .product-grid, .ind-grid, .spec-grid, .cert-grid, .contact-cards{grid-template-columns:1fr}
+  .site-nav{display:none} /* Mobile menu will need JS toggle in next phase if needed */
+  .hero-grid{grid-template-columns:1fr}
+}
 .category-link, .card-link{font-size:12px;font-weight:800;color:var(--green);text-transform:uppercase}
 .spec-card, .contact-card{padding:40px 30px;text-align:center}
 .spec-card:hover, .contact-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
