@@ -350,18 +350,19 @@ body{background:#fff}
 
 .brand img, .site-header .brand img {
   height: 42px !important;
-  width: auto !important;
+  width: 210px !important;
   display: block !important;
   opacity: 1 !important;
   visibility: visible !important;
-  min-width: 150px !important;
+  min-width: 210px !important;
+  max-width: 210px !important;
 }
 
-.brand {
+.site-header .brand {
   display: flex !important;
-  align-items: center !important;
+  width: 210px !important;
+  height: 42px !important;
   flex: none !important;
-  min-width: 150px !important;
 }
 .hero-visual img, 
 body .hero-visual img, 
