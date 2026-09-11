@@ -452,9 +452,65 @@ img{object-fit:contain!important;max-width:100%!important;height:auto!important}
 /* Footer Logo Lock */
 .footer-brand img{width:auto!important;max-width:230px!important;height:42px!important}
 
-/* WhatsApp Ultimate Size */
-.wa-float{width:140px!important;height:140px!important;bottom:30px!important;right:30px!important}
-.wa-float img{width:100%!important;height:100%!important}
+/* WhatsApp Ultimate Interaction */
+.wa-float {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wa-float img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+}
+
+.wa-float::before {
+  content: "Free Sample & Quick Quote";
+  position: absolute;
+  right: 85px;
+  background: #fff;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+}
+
+.wa-float:hover {
+  transform: scale(1.1);
+}
+
+.wa-float:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .wa-float {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+  }
+  .wa-float::before { display: none; }
+}
 
 /* ============================================================
    Velora Bags - v2.3 Final Button Polishing
