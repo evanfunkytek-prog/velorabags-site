@@ -299,6 +299,6 @@ def footer(p):
   </div>
 </footer>
 <script src="{p}assets/js/main.js"></script>
-<a href="{wa}" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><img src="{p}assets/img/wa-float.jpg" alt="WhatsApp"></a>
+<a href="{wa}" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><img src="{p}assets/img/wa-float.png" alt="WhatsApp"></a>
 """.format(p=p, brand=BRAND, lv=LOGO_VERSION, address=esc(ADDRESS),
            phone=PHONE, email=EMAIL, hours=HOURS, wa=WA)
