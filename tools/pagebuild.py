@@ -52,6 +52,18 @@ def build_head(p, relpath, title, desc, image, ld=None, noindex=False):
             '<meta name="twitter:image" content="%s">' % image,
             '<link rel="icon" href="%sassets/svg/favicon.svg" type="image/svg+xml">' % p,
             '<link rel="stylesheet" href="%sassets/css/style.css?v=%s">' % (p, CSS_VERSION)]
+    if C.GSC_VERIFICATION:
+        out.append('<meta name="google-site-verification" content="%s">'
+                   % esc(C.GSC_VERIFICATION))
+    if C.BING_VERIFICATION:
+        out.append('<meta name="msvalidate.01" content="%s">'
+                   % esc(C.BING_VERIFICATION))
+    if C.GA4_ID:
+        out.append('<script async src="https://www.googletagmanager.com/gtag/js'
+                   '?id=%s"></script>' % C.GA4_ID)
+        out.append('<script>window.dataLayer=window.dataLayer||[];function gtag()'
+                   '{dataLayer.push(arguments);}gtag("js",new Date());'
+                   'gtag("config","%s");</script>' % C.GA4_ID)
     if ld:
         out.append(jsonld(ld))
     return "<head>\n" + "\n".join(out) + "\n</head>"

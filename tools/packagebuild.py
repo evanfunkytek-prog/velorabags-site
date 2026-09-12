@@ -4,7 +4,7 @@ import os, re, shutil, zipfile
 from common import rp, read, write, pages, SKIP_DIRS, SITE, BRAND, EMAIL, PHONE
 
 PKG = rp("package")
-ZIP = rp("velorabags-website-%s.zip" % "2026-09-11")
+ZIP = rp("verlorabags-website-%s.zip" % "2026-09-11")
 REF_RE = re.compile(r'(?:href|src)="((?:\.\./)*assets/[^"?#]+)', re.I)
 CSS_REF_RE = re.compile(r'url\(["\']?((?:\.\./)*assets/[^"\')]+)')
 

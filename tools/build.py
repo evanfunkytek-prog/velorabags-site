@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Velora Bags static site build pipeline.
+"""Verlora Bags static site build pipeline.
 
-Usage:  python tools/build.py [css|product|chrome|seo|package|all]
+Usage:  python tools/build.py [css|product|europe|chrome|seo|package|all]
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-import templates, productbuild, pagebuild, seobuild, packagebuild
+import templates, productbuild, europebuild, pagebuild, seobuild, packagebuild
 from common import pages
 
 
@@ -25,6 +25,11 @@ def stage_product():
     print("  product  -> regenerated %d product detail pages" % n)
     c = productbuild.build_catalog()
     print("  catalog  -> products.html lists %d programmes" % c)
+
+
+def stage_europe():
+    n = europebuild.build_europe()
+    print("  europe   -> regenerated %d Europe / EU market pages" % n)
 
 
 def stage_chrome():
@@ -45,13 +50,14 @@ def stage_package():
           % (kept, wanted, files, size / 1048576))
 
 
-STAGES = {"css": stage_css, "product": stage_product, "chrome": stage_chrome,
-          "seo": stage_seo, "package": stage_package}
+STAGES = {"css": stage_css, "product": stage_product, "europe": stage_europe,
+          "chrome": stage_chrome, "seo": stage_seo, "package": stage_package}
 
 if __name__ == "__main__":
     which = sys.argv[1] if len(sys.argv) > 1 else "all"
-    order = ["css", "product", "chrome", "seo", "package"] if which == "all" else [which]
-    print("Velora Bags build: %s" % ", ".join(order))
+    order = (["css", "product", "europe", "chrome", "seo", "package"]
+             if which == "all" else [which])
+    print("Verlora Bags build: %s" % ", ".join(order))
     for name in order:
         STAGES[name]()
     print("done.")

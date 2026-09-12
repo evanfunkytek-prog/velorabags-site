@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """sitemap.xml / robots.txt generation."""
+import content as C
 from common import rp, write, SITE
 
-BUILD_DATE = "2026-09-11"
+BUILD_DATE = C.BUILD_DATE
 
 
 def entry(relpath, priority, freq, date=BUILD_DATE):
@@ -14,11 +15,12 @@ def entry(relpath, priority, freq, date=BUILD_DATE):
 def build_sitemap(indexable):
     top = {"index.html", "products.html", "quote.html", "contact.html",
            "about.html", "factory-tour.html", "certifications.html",
-           "industries.html", "blog.html"}
+           "industries.html", "blog.html", "europe.html", "eu-compliance.html"}
     rows = []
     order = {name: i for i, name in enumerate(
         ["index.html", "products.html", "about.html", "factory-tour.html",
-         "certifications.html", "industries.html", "quote.html", "contact.html", "blog.html"])}
+         "certifications.html", "industries.html", "quote.html", "contact.html",
+         "blog.html", "europe.html", "eu-compliance.html"])}
     def sort_key(relpath):
         if relpath in order:
             return (0, order[relpath], relpath)
@@ -26,7 +28,9 @@ def build_sitemap(indexable):
             return (1, 0, relpath)
         if relpath.startswith("blog/"):
             return (2, 0, relpath)
-        return (3, 0, relpath)
+        if relpath.startswith("markets/"):
+            return (3, 0, relpath)
+        return (4, 0, relpath)
     for relpath in sorted(indexable, key=sort_key):
         if relpath == "index.html":
             rows.append(entry(relpath, 1.0, "weekly"))
@@ -38,6 +42,8 @@ def build_sitemap(indexable):
             rows.append(entry(relpath, 0.8, "monthly"))
         elif relpath.startswith("blog/") and relpath != "blog.html":
             rows.append(entry(relpath, 0.6, "monthly"))
+        elif relpath.startswith("markets/"):
+            rows.append(entry(relpath, 0.8, "monthly"))
         elif relpath == "blog.html":
             rows.append(entry(relpath, 0.7, "weekly"))
         elif relpath in top:

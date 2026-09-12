@@ -1,4 +1,4 @@
-# Velora Bags — 箱包独立站（Custom Bag & Luggage Manufacturer Site）
+# Verlora Bags — 箱包独立站（Custom Bag & Luggage Manufacturer Site）
 
 纯静态、无框架、无外部依赖的 **箱包 OEM/ODM 工厂独立站**（英文，面向欧美 B2B 买家）。
 结构参考相邻项目 `独立站项目`（目前结构最完善的制造型独立站），配色/文案/图形均为全新设计。

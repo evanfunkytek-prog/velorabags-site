@@ -5,7 +5,7 @@ from common import (rp, read, write, esc, CSS_VERSION, LOGO_VERSION,
                     BRAND, ADDRESS, PHONE, EMAIL, HOURS, WA)
 
 TOKENS = """/* ============================================================
-   Velora Bags - design tokens
+   Verlora Bags - design tokens
    ============================================================ */
 :root{
   --green:#315522;--green-hover:#26441a;--accent:#dca63b;
@@ -190,7 +190,7 @@ form.is-sending button[type=submit]{opacity:.7;cursor:progress}
 def build_css():
     base = read(rp("tools", "base-design-system.css"))
     base = re.sub(r"^:root\{.*?\}\s*", "", base, count=1, flags=re.S)
-    header = "/* ============================================================\n   Velora Bags - recovered component system (base layer)\n   ============================================================ */\n"
+    header = "/* ============================================================\n   Verlora Bags - recovered component system (base layer)\n   ============================================================ */\n"
     write(rp("assets", "css", "style.css"), TOKENS + header + base + OVERRIDES)
 
 
@@ -237,6 +237,8 @@ def header(p):
         <div class="nav-panel slim-dropdown">
           <a href="{p}blog.html" class="menu-link">Buying Guides</a>
           <a href="{p}certifications.html" class="menu-link">Certifications</a>
+          <a href="{p}europe.html" class="menu-link">Europe &amp; EU Shipping</a>
+          <a href="{p}eu-compliance.html" class="menu-link">EU Packaging Compliance</a>
           <a href="{p}about.html" class="menu-link">About Us</a>
         </div>
       </div>
@@ -272,6 +274,8 @@ def footer(p):
         <li><a href="{p}about.html">About Us</a></li>
         <li><a href="{p}factory-tour.html">Factory Tour</a></li>
         <li><a href="{p}certifications.html">Certifications</a></li>
+        <li><a href="{p}europe.html">Europe &amp; EU Shipping</a></li>
+        <li><a href="{p}eu-compliance.html">EU Packaging Compliance</a></li>
         <li><a href="{p}industries.html">Industries</a></li>
         <li><a href="{p}blog.html">Buying Guides</a></li>
         <li><a href="{p}contact.html">Contact</a></li>

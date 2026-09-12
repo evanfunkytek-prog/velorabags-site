@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Shared helpers for the Velora Bags build pipeline."""
+"""Shared helpers for the Verlora Bags build pipeline."""
 import os, re, json, html
 import content as C
 
@@ -30,9 +30,24 @@ def read(path):
 
 
 def write(path, text):
+    """Write text, preserving the conventions of the file already on disk.
+
+    Published pages are UTF-8 with BOM and CRLF, the stylesheet is CRLF with
+    no BOM, generated XML is plain LF. Rebuilding must not silently change
+    any of that, so match whatever is there rather than imposing one style.
+    """
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="utf-8", newline="\n") as fh:
-        fh.write(text)
+    bom = crlf = False
+    if os.path.exists(path):
+        with open(path, "rb") as fh:
+            raw = fh.read()
+        bom = raw.startswith(b"\xef\xbb\xbf")
+        crlf = b"\r\n" in raw
+    body = text.replace("\r\n", "\n")
+    if crlf:
+        body = body.replace("\n", "\r\n")
+    with open(path, "wb") as fh:
+        fh.write((b"\xef\xbb\xbf" if bom else b"") + body.encode("utf-8"))
 
 
 def pages():

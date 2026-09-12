@@ -249,7 +249,7 @@ def build_catalog():
       <p class="lead">Send a photo, a sketch, or a competitor sample. Our pattern room will reverse-engineer it and quote you within two days.</p>
       <a class="btn btn-primary" href="quote.html">Send your reference</a>
     </div>
-    <div class="split-media reveal delayed-1"><img src="assets/img/factory-hero.webp" alt="Bag production line at the Velora factory" width="560" height="460" loading="lazy"></div>
+    <div class="split-media reveal delayed-1"><img src="assets/img/factory-hero.webp" alt="Bag production line at the Verlora factory" width="560" height="460" loading="lazy"></div>
   </div>
 </section>
 

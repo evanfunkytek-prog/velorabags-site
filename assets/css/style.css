@@ -1,5 +1,5 @@
 /* ============================================================
-   Velora Bags - design tokens
+   Verlora Bags - design tokens
    ============================================================ */
 :root{
   --green:#315522;--green-hover:#26441a;--accent:#dca63b;
@@ -19,7 +19,7 @@
   --shadow-lg:0 30px 60px rgba(17,24,18,.14);
 }
 /* ============================================================
-   Velora Bags - recovered component system (base layer)
+   Verlora Bags - recovered component system (base layer)
    ============================================================ */
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -338,7 +338,7 @@ body{background:#fff}
 .hero-point{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink-700);font-size:.95rem}
 .hero-visual-container{position:relative;display:grid;grid-template-columns:1fr 220px;gap:20px;align-items:start}
 /* ============================================================
-   Velora Bags - Hero Banner Final Refinement (Fidelity First)
+   Verlora Bags - Hero Banner Final Refinement (Fidelity First)
    ============================================================ */
 .hero-visual img, 
 body .hero-visual img, 
@@ -591,7 +591,7 @@ img{object-fit:contain!important;max-width:100%!important;height:auto!important}
 }
 
 /* ============================================================
-   Velora Bags - v2.3 Final Button Polishing
+   Verlora Bags - v2.3 Final Button Polishing
    ============================================================ */
 .btn-primary, 
 .site-header .site-nav a.btn-primary,

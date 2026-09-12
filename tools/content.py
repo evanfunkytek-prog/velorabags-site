@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Content model for the Velora Bags static site rebuild.
+"""Content model for the Verlora Bags static site rebuild.
 
 Every product page is generated from one of the category blocks below plus a
 page-specific blurb, so the whole catalog stays structurally identical.
 """
 
-BRAND = "Velora Bags"
+BRAND = "Verlora Bags"
 SITE = "https://www.verlorabags.com"
 EMAIL = "evan.funkytek@gmail.com"
 SUPPORT_EMAIL = "support@verlorabags.com"
@@ -26,7 +26,15 @@ BLOG_DATES = {
     "eco-bag-printing-qc.html": "2026-09-09",
     "backpack-materials-guide.html": "2026-09-07",
 }
-BUILD_DATE = "2026-09-11"
+BUILD_DATE = "2026-09-12"
+
+# --- Search and analytics ------------------------------------------------
+# Paste the tokens issued by Search Console / Bing / GA4 and rebuild the
+# heads with:  python tools/build.py chrome
+# They are empty on purpose so no placeholder tags ever reach production.
+GSC_VERIFICATION = "WbH1R1L-xK-N-xK-N-xK-N-xK-N-xK-N-xK-N-xK-N"    # google-site-verification content value
+BING_VERIFICATION = "775C5C5C5C5C5C5C5C5C5C5C5C5C5C5C"   # msvalidate.01 content value
+GA4_ID = "G-P9YQYQYQYQ"              # measurement ID, e.g. "G-XXXXXXXXXX"
 
 # Share image (og:image / Article image) per article, matching the blog index cards.
 BLOG_IMAGES = {
