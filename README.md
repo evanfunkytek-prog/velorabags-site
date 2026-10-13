@@ -124,6 +124,7 @@ curl.exe -sI -H "Accept-Language: en-US,en;q=0.9" https://www.verlorabags.com/
 - 配色与字体：`assets/css/style.css` 顶部 `:root` 变量（咖啡棕/驼色/奶油色）
 - 表单接口地址写在表单的 `data-endpoint` 上（默认 `/api/quote`）；删掉该属性即回到纯 `mailto:` 模式
 - 订单/审核用邮箱、地址等站点级信息集中在 `tools/content.py` 顶部（`SITE` / `EMAIL` / `PHONE` / `WA` / `ADDRESS`）
+- 站长验证与统计：`tools/content.py` 顶部的 `GSC_VERIFICATION`（Google Search Console）、`BING_VERIFICATION`（Bing 站长）、`GA4_ID`（Google Analytics）**默认留空**，避免把占位标签发布上线；拿到真值后填入，再运行 `python tools/build.py chrome` 重建全部页面头部。
 - 博客文章的 `datePublished` 取自 `tools/content.py` 的 `BLOG_DATES`，可直接改成真实发布日
 - 重新生成页面外壳与 SEO 文件：`python tools/build.py chrome`（重写 head/页头/页脚）、`python tools/build.py seo`（sitemap + robots）
 - 全站无外链字体/CDN，离线可完整运行

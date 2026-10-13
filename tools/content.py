@@ -32,9 +32,9 @@ BUILD_DATE = "2026-10-10"
 # Paste the tokens issued by Search Console / Bing / GA4 and rebuild the
 # heads with:  python tools/build.py chrome
 # They are empty on purpose so no placeholder tags ever reach production.
-GSC_VERIFICATION = "WbH1R1L-xK-N-xK-N-xK-N-xK-N-xK-N-xK-N-xK-N"    # google-site-verification content value
-BING_VERIFICATION = "775C5C5C5C5C5C5C5C5C5C5C5C5C5C5C"   # msvalidate.01 content value
-GA4_ID = "G-P9YQYQYQYQ"              # measurement ID, e.g. "G-XXXXXXXXXX"
+GSC_VERIFICATION = ""    # google-site-verification content value
+BING_VERIFICATION = ""   # msvalidate.01 content value
+GA4_ID = ""              # measurement ID, e.g. "G-XXXXXXXXXX"
 
 # Share image (og:image / Article image) per article, matching the blog index cards.
 BLOG_IMAGES = {
