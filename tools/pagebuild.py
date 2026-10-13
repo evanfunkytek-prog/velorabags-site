@@ -3,7 +3,7 @@
 import os, re
 import content as C
 from common import (rp, read, write, pages, esc, plain, abs_url, asset_url, tidy,
-                    jsonld, org_node, SITE, BRAND, CSS_VERSION)
+                    jsonld, org_node, SITE, BRAND, CSS_VERSION, link_prefix)
 from templates import header, footer
 
 HEAD_RE = re.compile(r"<head>.*?</head>", re.S)
@@ -128,7 +128,7 @@ def rewrite_chrome(indexable):
     }
     for relpath in pages():
         s = read(rp(*relpath.split("/")))
-        p = "../" if "/" in relpath else ""
+        p = link_prefix(relpath)
         t = TITLE_RE.search(s)
         title = plain(t.group(1)) if t else BRAND
         d = DESC_RE.search(s)
@@ -176,12 +176,17 @@ def rewrite_chrome(indexable):
                   "publisher": org_node(),
                   "author": {"@type": "Organization", "name": BRAND}}
         s = HEAD_RE.sub(lambda _m: build_head(p, relpath, title, desc, img, ld, noindex), s, count=1)
+        chrome_head, chrome_foot = header(p), footer(p)
+        if p == "/":
+            # the templates emit "/." for the home link; keep it as plain "/"
+            chrome_head = chrome_head.replace('href="/."', 'href="/"')
+            chrome_foot = chrome_foot.replace('href="/."', 'href="/"')
         if HEADER_RE.search(s):
-            s = HEADER_RE.sub(lambda _m: header(p), s, count=1)
+            s = HEADER_RE.sub(lambda _m: chrome_head, s, count=1)
         s = FOOTER_RE.sub("", s)
         s = WAFLOAT_RE.sub("", s)
         s = JS_RE.sub("", s)
-        s = s.replace("</body>", footer(p) + "</body>")
+        s = s.replace("</body>", chrome_foot + "</body>")
         # Cloudflare Pages serves clean extensionless URLs; keep internal links on the same canonical form.
         if relpath != "404.html":
             def clean_href(match):

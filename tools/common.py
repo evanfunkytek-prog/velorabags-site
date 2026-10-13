@@ -13,7 +13,8 @@ ADDRESS = C.ADDRESS
 HOURS = C.HOURS
 CSS_VERSION = "2.3"
 LOGO_VERSION = "1.2"
-SKIP_DIRS = {".git", "research", "tools", "package", "dist", "node_modules", "EliteBox-Packaging"}
+SKIP_DIRS = {".git", "research", "tools", "package", "dist", "node_modules",
+             "EliteBox-Packaging", "Verlora-\u7d22\u5f15\u4fee\u590d-20261013"}
 
 
 def rp(*parts):
@@ -61,6 +62,20 @@ def pages():
             if name.endswith(".html"):
                 out.append(rel(os.path.join(base, name)))
     return sorted(out)
+
+
+def link_prefix(relpath):
+    """Link prefix for the header/footer templates.
+
+    Normal pages use "" at the root and "../" one level down. The 404 page is
+    different: Cloudflare serves it for any missing path, so its links have to
+    be root-absolute. With a relative prefix the browser would resolve them
+    against the directory of the typed URL, so /products/nope would ask for
+    /products/assets/css/style.css and render unstyled.
+    """
+    if relpath == "404.html":
+        return "/"
+    return "../" if "/" in relpath else ""
 
 
 def esc(text):

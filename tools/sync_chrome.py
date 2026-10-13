@@ -7,7 +7,7 @@ keeps each file's existing encoding intact.
 """
 import re
 
-from common import rp, pages, tidy
+from common import rp, pages, tidy, link_prefix
 from templates import header, footer
 
 HEADER_RE = re.compile(r"<header\b.*?</header>", re.S)
@@ -22,10 +22,14 @@ def sync_one(relpath):
     bom = raw.startswith(b"\xef\xbb\xbf")
     text = raw.decode("utf-8-sig")
     crlf = "\r\n" in text
-    p = "../" if "/" in relpath else ""
+    p = link_prefix(relpath)
 
     head_html = header(p)
     foot_html = footer(p)
+    if p == "/":
+        # the templates emit "/." for the home link; keep it as plain "/"
+        head_html = head_html.replace('href="/."', 'href="/"')
+        foot_html = foot_html.replace('href="/."', 'href="/"')
     if crlf:
         head_html = head_html.replace("\n", "\r\n")
         foot_html = foot_html.replace("\n", "\r\n")
