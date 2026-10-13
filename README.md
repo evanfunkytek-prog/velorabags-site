@@ -60,6 +60,30 @@ python -m http.server 8000
 
 未配置时接口返回 503，前端自动改走邮件客户端。表单还带蜜罐字段 `_gotcha` 防垃圾提交，并在页面上给出成功/失败提示。
 
+### 生产环境当前配置（2026-10-13 已接上 Resend）
+线上**已经配好**收信渠道：访客提交表单后，由 Resend 以本站域名把线索发到下面这个邮箱，访客本人不需要做任何事。
+
+| Cloudflare 环境变量（Production） | 值 | 类型 |
+| --- | --- | --- |
+| `RESEND_API_KEY` | Resend 的 Sending access key（只存在 Cloudflare 里，不进仓库） | Secret |
+| `LEAD_TO` | `evan.funkytek@gmail.com` | Text |
+| `LEAD_FROM` | `Verlora Bags Website <quotes@verlorabags.com>` | Text |
+
+- 发件域名 `verlorabags.com` 已在 Resend 验证：DKIM 的 TXT `resend._domainkey`，加上 SPF 的两条 CNAME `send` / `rsend`，都加在 Cloudflare DNS 里，代理状态必须保持 **DNS only（灰云）**。
+- 接口已把 `reply_to` 设为访客填写的邮箱，所以收到线索后在 Gmail 直接点「回复」就是回客户本人，不用手动复制地址。
+- `quotes@verlorabags.com` 不需要真实存在，Resend 是以本站域名代发。
+
+自检（期望返回 `{"ok":true,"delivered":"email"}`）：
+
+```powershell
+'{"fields":{"Company":"readme self-test","Email":"you@example.com"}}' | Set-Content -Path "$env:TEMP\lead.json" -Encoding ascii
+curl.exe -sS -X POST -H "Content-Type: application/json" --data-binary "@$env:TEMP\lead.json" https://www.verlorabags.com/api/quote
+```
+
+也可以直接在 https://www.verlorabags.com/quote 真填一次表单做端到端确认（用另一个邮箱最好，能顺便验证回复地址）。
+
+返回码含义：`200` 已投递；`400 Missing contact details` 是 `Company` 与 `Email` 都没填；`502` 多半是 Resend 侧拒收（发件域名没验证好，或 `LEAD_FROM` 用了非本站域名）；`503` 是变量没生效——**环境变量只对保存之后新建的部署生效，改完必须去 Deployments 重新部署一次**。
+
 ## 访问防护：屏蔽「中文界面 + 海外 IP」访客（2026-09-12 新增）
 **结论：Wordfence 用不上，也不需要。** Wordfence 是 WordPress 插件，本站是纯静态站 + Cloudflare Pages，没有 PHP/数据库，装不了；而且静态站的"扒站"防护本来就不该在应用层做。用 Cloudflare 免费版能力就能实现同样的效果，有两条路：
 
