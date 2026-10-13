@@ -108,6 +108,24 @@ def collect_products():
 def rewrite_chrome(indexable):
     """Normalise <head>, header and footer on every page. Returns indexable paths."""
     prods = {x["file"]: x for x in collect_products()}
+    seo_overrides = {
+        "index.html": (
+            "Verlora Bags | Custom Travel & Reusable Bag Manufacturer",
+            "Verlora Bags manufactures custom travel, weekender, backpack, tote and reusable bags for brands and retailers. OEM/ODM production from Guangzhou with custom materials, branding and MOQ from 100 pcs.",
+        ),
+        "products/duffel-weekender.html": (
+            "Custom Duffel & Weekender Bags for Travel | Verlora Bags",
+            "Custom duffel and weekender bags for travel and gym programs, with reinforced bases, shoe compartments, trolley sleeves and branding. MOQ 300 pcs, OEM/ODM.",
+        ),
+        "products/travel-shoulder-bag.html": (
+            "Custom Travel Shoulder Bags | OEM Travel Bag Manufacturer | Verlora",
+            "Custom travel shoulder bags with adjustable straps and secure zip compartments for everyday trips and travel programs. MOQ 300 pcs, custom branding and OEM/ODM.",
+        ),
+        "products/backpack.html": (
+            "Custom Laptop Backpacks for Travel & Commuting | Verlora Bags",
+            "Custom laptop backpacks for travel and commuting with padded 14-17 inch sleeves, 600D polyester or canvas shells and branded details. MOQ 300 pcs per style.",
+        ),
+    }
     for relpath in pages():
         s = read(rp(*relpath.split("/")))
         p = "../" if "/" in relpath else ""
@@ -115,6 +133,8 @@ def rewrite_chrome(indexable):
         title = plain(t.group(1)) if t else BRAND
         d = DESC_RE.search(s)
         desc = plain(d.group(1)) if d else ""
+        if relpath in seo_overrides:
+            title, desc = seo_overrides[relpath]
         img = asset_url(main_image(s))
         if relpath.startswith("blog/") and relpath != "blog.html":
             share = C.BLOG_IMAGES.get(relpath.split("/", 1)[1])
@@ -130,6 +150,8 @@ def rewrite_chrome(indexable):
             prod = prods.get(relpath.split("/", 1)[1])
             if prod:
                 cat = C.CATS[prod["cat"]]
+                if relpath in seo_overrides:
+                    desc = seo_overrides[relpath][1]
                 if not desc:
                     desc = prod["blurb"]
                 ld = {"@context": "https://schema.org", "@graph": [
@@ -143,7 +165,7 @@ def rewrite_chrome(indexable):
                      "url": abs_url(relpath)},
                     {"@type": "BreadcrumbList", "itemListElement": [
                         {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
-                        {"@type": "ListItem", "position": 2, "name": "Products", "item": SITE + "/products.html"},
+                        {"@type": "ListItem", "position": 2, "name": "Products", "item": SITE + "/products"},
                         {"@type": "ListItem", "position": 3, "name": prod["name"], "item": abs_url(relpath)}]}]}
         elif relpath.startswith("blog/") and relpath != "blog.html":
             ld = {"@context": "https://schema.org", "@type": "Article",
@@ -154,6 +176,14 @@ def rewrite_chrome(indexable):
                   "publisher": org_node(),
                   "author": {"@type": "Organization", "name": BRAND}}
         s = HEAD_RE.sub(lambda _m: build_head(p, relpath, title, desc, img, ld, noindex), s, count=1)
+        # Cloudflare Pages serves clean extensionless URLs; keep internal links on the same canonical form.
+        if relpath != "404.html":
+            def clean_href(match):
+                path = match.group("path")
+                if path.endswith("index"):
+                    path = path[:-5] or "."
+                return match.group("prefix") + path + match.group("suffix")
+            s = re.sub(r'(?P<prefix>href=")(?P<path>(?:\.\./|/)?[^"#?]+)\.html(?P<suffix>(?:[?#][^"]*)?")', clean_href, s)
         if HEADER_RE.search(s):
             s = HEADER_RE.sub(lambda _m: header(p), s, count=1)
         s = FOOTER_RE.sub("", s)

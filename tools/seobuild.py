@@ -6,8 +6,16 @@ from common import rp, write, SITE
 BUILD_DATE = C.BUILD_DATE
 
 
+def clean_path(relpath):
+    relpath = relpath.replace("\\", "/")
+    if relpath == "index.html":
+        return ""
+    return relpath[:-5] if relpath.endswith(".html") else relpath
+
+
 def entry(relpath, priority, freq, date=BUILD_DATE):
-    loc = SITE + "/" if relpath == "index.html" else SITE + "/" + relpath
+    clean = clean_path(relpath)
+    loc = SITE + "/" if not clean else SITE + "/" + clean
     return ("  <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq>"
             "<priority>%.1f</priority></url>" % (loc, date, freq, priority))
 

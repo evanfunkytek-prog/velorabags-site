@@ -26,7 +26,7 @@ BLOG_DATES = {
     "eco-bag-printing-qc.html": "2026-09-09",
     "backpack-materials-guide.html": "2026-09-07",
 }
-BUILD_DATE = "2026-09-12"
+BUILD_DATE = "2026-10-10"
 
 # --- Search and analytics ------------------------------------------------
 # Paste the tokens issued by Search Console / Bing / GA4 and rebuild the
@@ -260,7 +260,7 @@ PAGE_CAT = {
 
 # page file -> one-sentence positioning line used in the hero and meta description
 PAGE_BLURB = {
-    "backpack.html": "Padded commuter backpack engineered around your laptop size, branding and target retail price.",
+    "backpack.html": "Custom laptop backpacks for commuting and travel, with padded 14-17 inch sleeves, branding and OEM/ODM production.",
     "bohemian-jute-makeup-pouch.html": "A zipped jute pouch with bohemian print character, sized for cosmetics, gifting and travel sets.",
     "bridal-party-jute-beach-bag.html": "A generous jute beach tote produced in matched sets for bridal parties, resorts and welcome gifts.",
     "bulk-jute-tote-set.html": "Ready-to-brand jute tote sets packed for bulk retail and promotional rollouts.",
@@ -268,7 +268,7 @@ PAGE_BLURB = {
     "canvas-bags.html": "Heavyweight cotton canvas totes that hold their shape through retail, laundry and daily carry.",
     "cooler-bags.html": "Insulated cooler bags with food-safe lining for grocery, delivery and picnic programmes.",
     "drawstring-bags.html": "Lightweight drawstring bags that pack flat and print vividly for sports and event giveaways.",
-    "duffel-weekender.html": "Weekender and gym duffels with reinforced base, padded grip and optional shoe compartment.",
+    "duffel-weekender.html": "Custom duffel and weekender bags for travel and gym use, with reinforced base, padded grip and optional shoe compartment.",
     "dupont-paper-shoulder-tote.html": "A soft-touch Tyvek-style shoulder tote that folds flat, resists tearing and takes full-colour print.",
     "ethnic-linen-lunch-bag.html": "A zipped linen lunch bag with ethnic detailing, insulated lining available on request.",
     "ethnic-style-jute-tote.html": "Large-capacity jute tote with ethnic print appeal for lifestyle and resort collections.",
@@ -293,7 +293,7 @@ PAGE_BLURB = {
     "retro-lotus-linen-bag.html": "Retro lotus-print linen bag aimed at lifestyle, museum and boutique retail.",
     "small-eco-gift-bag.html": "A compact jute gift bag sized for small items, samples and event handouts.",
     "transparent-pvc-toiletry-bag.html": "Waterproof clear PVC toiletry bags that pass through security and show contents.",
-    "travel-shoulder-bag.html": "A custom travel shoulder bag with adjustable strap and secure zip compartments.",
+    "travel-shoulder-bag.html": "Custom travel shoulder bags with adjustable straps and secure zip compartments for everyday trips and travel programs.",
     "travel-trolley.html": "Cabin and checked trolley cases with spinner wheels and telescopic handle.",
     "tyvek-bags.html": "Tyvek-style bags that are waterproof, tear-resistant and ready for full-colour print.",
     "wedding-welcome-burlap-bag.html": "Burlap welcome bags produced in batches for weddings, hotels and guest gifting.",

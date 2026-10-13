@@ -214,36 +214,36 @@ NAV_PRODUCTS = [
 
 def header(p):
     links = "\n".join(
-        '        <a href="{p}products/{slug}.html" class="menu-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">{icon}</svg> {name}</a>'.format(
+        '        <a href="{p}products/{slug}" class="menu-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">{icon}</svg> {name}</a>'.format(
             p=p, slug=slug, icon=icon, name=name)
         for slug, name, icon in NAV_PRODUCTS)
     return """<header class="site-header" data-header>
   <div class="container header-inner">
-    <a href="{p}index.html" class="brand"><img src="{p}assets/svg/logo.svg?v={lv}" alt="{brand}" height="42"></a>
+    <a href="{p}." class="brand"><img src="{p}assets/svg/logo.svg?v={lv}" alt="{brand}" height="42"></a>
     <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span><span></span></button>
     <nav class="site-nav" id="site-nav" data-nav>
-      <a href="{p}index.html" class="nav-item">Home</a>
+      <a href="{p}." class="nav-item">Home</a>
       <div class="nav-item">
         Products <svg width="10" height="10" style="margin-left:4px;stroke-width:3" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
         <div class="nav-panel mega-menu">
 {links}
-          <a href="{p}products.html" class="menu-link menu-all">View all product catalog &rarr;</a>
+          <a href="{p}products" class="menu-link menu-all">View all product catalog &rarr;</a>
         </div>
       </div>
-      <a href="{p}industries.html" class="nav-item">Solutions</a>
-      <a href="{p}factory-tour.html" class="nav-item">Factory</a>
+      <a href="{p}industries" class="nav-item">Solutions</a>
+      <a href="{p}factory-tour" class="nav-item">Factory</a>
       <div class="nav-item">
         Resources <svg width="10" height="10" style="margin-left:4px;stroke-width:3" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
         <div class="nav-panel slim-dropdown">
-          <a href="{p}blog.html" class="menu-link">Buying Guides</a>
-          <a href="{p}certifications.html" class="menu-link">Certifications</a>
-          <a href="{p}europe.html" class="menu-link">Europe &amp; EU Shipping</a>
-          <a href="{p}eu-compliance.html" class="menu-link">EU Packaging Compliance</a>
-          <a href="{p}about.html" class="menu-link">About Us</a>
+          <a href="{p}blog" class="menu-link">Buying Guides</a>
+          <a href="{p}certifications" class="menu-link">Certifications</a>
+          <a href="{p}europe" class="menu-link">Europe &amp; EU Shipping</a>
+          <a href="{p}eu-compliance" class="menu-link">EU Packaging Compliance</a>
+          <a href="{p}about" class="menu-link">About Us</a>
         </div>
       </div>
-      <a href="{p}contact.html" class="nav-item">Contact</a>
-      <a class="btn btn-primary" href="{p}quote.html">Get a Quote</a>
+      <a href="{p}contact" class="nav-item">Contact</a>
+      <a class="btn btn-primary" href="{p}quote">Get a Quote</a>
     </nav>
   </div>
 </header>
@@ -255,7 +255,7 @@ def footer(p):
   <div class="container footer-main">
     <div class="footer-brand">
       <img src="{p}assets/svg/logo.svg?v={lv}" alt="{brand}" height="40">
-      <p>Custom reusable bag manufacturer since 2009. Guangzhou-based OEM/ODM factory supporting brand programmes in 60+ countries.</p>
+      <p>Verlora Bags manufactures custom travel, reusable and promotional bags for brand programmes and retailers worldwide.</p>
     </div>
     <div>
       <h4>Products</h4>
@@ -265,20 +265,20 @@ def footer(p):
         <li><a href="{p}products/non-woven-bags.html">Non-Woven Bags</a></li>
         <li><a href="{p}products/woven-pp-bags.html">Woven PP Bags</a></li>
         <li><a href="{p}products/backpack.html">Backpacks</a></li>
-        <li><a href="{p}products.html">All Products</a></li>
+        <li><a href="{p}products">All Products</a></li>
       </ul>
     </div>
     <div>
       <h4>Company</h4>
       <ul class="footer-links">
-        <li><a href="{p}about.html">About Us</a></li>
-        <li><a href="{p}factory-tour.html">Factory Tour</a></li>
-        <li><a href="{p}certifications.html">Certifications</a></li>
-        <li><a href="{p}europe.html">Europe &amp; EU Shipping</a></li>
-        <li><a href="{p}eu-compliance.html">EU Packaging Compliance</a></li>
-        <li><a href="{p}industries.html">Industries</a></li>
-        <li><a href="{p}blog.html">Buying Guides</a></li>
-        <li><a href="{p}contact.html">Contact</a></li>
+        <li><a href="{p}about">About Us</a></li>
+        <li><a href="{p}factory-tour">Factory Tour</a></li>
+        <li><a href="{p}certifications">Certifications</a></li>
+        <li><a href="{p}europe">Europe &amp; EU Shipping</a></li>
+        <li><a href="{p}eu-compliance">EU Packaging Compliance</a></li>
+        <li><a href="{p}industries">Industries</a></li>
+        <li><a href="{p}blog">Buying Guides</a></li>
+        <li><a href="{p}contact">Contact</a></li>
       </ul>
     </div>
     <div>
@@ -294,7 +294,7 @@ def footer(p):
   <div class="footer-bottom">
     <div class="container">
       <span>&copy; <span data-year>2026</span> {brand} Co., Ltd. All rights reserved.</span>
-      <span><a href="{p}index.html">Home</a> &middot; <a href="{p}products.html">Products</a> &middot; <a href="{p}quote.html">Quote</a> &middot; <a href="{p}privacy.html">Privacy</a> &middot; <a href="{p}terms.html">Terms</a> &middot; <a href="{p}sitemap.xml">Sitemap</a></span>
+      <span><a href="{p}.">Home</a> &middot; <a href="{p}products">Products</a> &middot; <a href="{p}quote">Quote</a> &middot; <a href="{p}privacy">Privacy</a> &middot; <a href="{p}terms">Terms</a> &middot; <a href="{p}sitemap.xml">Sitemap</a></span>
     </div>
   </div>
 </footer>

@@ -50,15 +50,20 @@ def faq_items(items):
     return "\n      ".join(out)
 
 
+def clean_href(path):
+    return path[:-5] if path.endswith(".html") else path
+
+
 def related_cards(items, p):
     out = []
     for x in items:
         img = x["image"].replace("../", "")
+        f = clean_href(x["file"])
         out.append("""<article class="card reveal">
   <div class="card-media"><a href="{p}products/{f}"><img src="{p}{img}" alt="{name}" width="480" height="440" loading="lazy"></a></div>
   <div class="card-body"><h3><a href="{p}products/{f}">{name}</a></h3>
   <div class="card-meta"><span class="spec-line">OEM / ODM</span><a class="card-link" href="{p}products/{f}">View &rarr;</a></div></div>
-</article>""".format(p=p, f=x["file"], img=img, name=esc(x["name"])))
+</article>""".format(p=p, f=f, img=img, name=esc(x["name"])))
     return "\n".join(out)
 
 
@@ -211,10 +216,11 @@ def build_catalog():
     cards = []
     for x in prods:
         img = x["image"].replace("../", "")
+        xfile = clean_href(x["file"])
         cards.append("""      <article class="category-card reveal p-item" data-cat="{cats}">
         <div class="category-media"><a href="products/{f}"><img src="{img}" alt="{name}" width="480" height="440" loading="lazy"></a></div>
         <div class="category-body"><h3>{name}</h3><a href="products/{f}" class="category-link">View &rarr;</a></div>
-      </article>""".format(cats=x["group"] + " " + x["cat"], f=x["file"], img=img, name=esc(x["name"])))
+      </article>""".format(cats=x["group"] + " " + x["cat"], f=xfile, img=img, name=esc(x["name"])))
     tabs = "\n      ".join(
         '<button class="tab-btn{act}" data-filter="{key}" type="button">{label}</button>'.format(
             act=" is-active" if key == "all" else "", key=key, label=label)
@@ -223,8 +229,8 @@ def build_catalog():
 <section class="page-hero">
   <div class="container">
     <span class="eyebrow">OEM / ODM catalog</span>
-    <h1>Custom Bag Programmes</h1>
-    <p class="lead">Every style below is a starting point. We re-engineer materials, hardware and branding to fit your brand. Filter by category, then send us your spec for a fast quote.</p>
+    <h1>Custom Travel, Reusable &amp; Promotional Bag Programmes</h1>
+    <p class="lead">Explore custom travel bags, duffels, backpacks, totes and reusable bag programmes. Every style is a starting point: we re-engineer materials, hardware and branding to fit your brand and target price.</p>
   </div>
 </section>
 

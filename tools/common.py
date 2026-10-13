@@ -70,7 +70,12 @@ def plain(text):
 
 
 def abs_url(relpath):
-    return SITE + "/" + relpath.lstrip("/")
+    relpath = relpath.lstrip("/")
+    if relpath == "index.html":
+        return SITE + "/"
+    if relpath.endswith(".html"):
+        relpath = relpath[:-5]
+    return SITE + "/" + relpath
 
 
 def asset_url(src):
