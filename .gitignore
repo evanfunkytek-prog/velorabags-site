@@ -15,3 +15,5 @@ __pycache__/
 Verlora-索引修复-20261013/
 _patchtest.txt
 _tmp_probe_write.txt
+dist/
+package/
