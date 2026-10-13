@@ -7,7 +7,7 @@ keeps each file's existing encoding intact.
 """
 import re
 
-from common import rp, pages
+from common import rp, pages, tidy
 from templates import header, footer
 
 HEADER_RE = re.compile(r"<header\b.*?</header>", re.S)
@@ -36,6 +36,7 @@ def sync_one(relpath):
     text = WAFLOAT_RE.sub("", text)
     text = JS_RE.sub("", text)
     text = text.replace("</body>", foot_html + "</body>")
+    text = tidy(text)
 
     open(path, "wb").write((b"\xef\xbb\xbf" if bom else b"") + text.encode("utf-8"))
     return not bom

@@ -72,6 +72,30 @@ def plain(text):
     return re.sub(r"\s+", " ", text).strip()
 
 
+PROTECTED_RE = re.compile(r"<(pre|textarea)\b.*?</\1>", re.S | re.I)
+BLANK_RUN_RE = re.compile(r"(?:\r\n|\n){2,}")
+
+
+def tidy(text):
+    """Collapse runs of blank lines to a single blank line.
+
+    The chrome rebuild removes blocks (old header/footer, wa-float anchor,
+    main.js tag) but leaves their blank lines behind, so every regeneration
+    added a few more empty lines to every page. Collapsing the runs makes the
+    pipeline idempotent: running it twice produces no further diff. Whitespace
+    inside <pre> and <textarea> is preserved.
+    """
+    eol = "\r\n" if "\r\n" in text else "\n"
+    out = []
+    pos = 0
+    for m in PROTECTED_RE.finditer(text):
+        out.append(BLANK_RUN_RE.sub(eol + eol, text[pos:m.start()]))
+        out.append(m.group(0))
+        pos = m.end()
+    out.append(BLANK_RUN_RE.sub(eol + eol, text[pos:]))
+    return "".join(out)
+
+
 def abs_url(relpath):
     relpath = relpath.lstrip("/")
     if relpath == "index.html":

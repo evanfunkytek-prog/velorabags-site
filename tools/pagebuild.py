@@ -2,7 +2,7 @@
 """Head/SEO normalisation and page chrome stitching."""
 import os, re
 import content as C
-from common import (rp, read, write, pages, esc, plain, abs_url, asset_url,
+from common import (rp, read, write, pages, esc, plain, abs_url, asset_url, tidy,
                     jsonld, org_node, SITE, BRAND, CSS_VERSION)
 from templates import header, footer
 
@@ -190,6 +190,7 @@ def rewrite_chrome(indexable):
                     path = path[:-5] or "."
                 return match.group("prefix") + path + match.group("suffix")
             s = re.sub(r'(?P<prefix>href=")(?P<path>(?:\.\./|/)?[^"#?]+)\.html(?P<suffix>(?:[?#][^"]*)?")', clean_href, s)
+        s = tidy(s)
         write(rp(*relpath.split("/")), s)
         if not noindex:
             indexable.append(relpath)
