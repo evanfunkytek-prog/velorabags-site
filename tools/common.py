@@ -13,7 +13,7 @@ ADDRESS = C.ADDRESS
 HOURS = C.HOURS
 CSS_VERSION = "2.3"
 LOGO_VERSION = "1.2"
-SKIP_DIRS = {".git", "research", "tools", "package", "dist", "node_modules"}
+SKIP_DIRS = {".git", "research", "tools", "package", "dist", "node_modules", "EliteBox-Packaging"}
 
 
 def rp(*parts):
@@ -53,7 +53,10 @@ def write(path, text):
 def pages():
     out = []
     for base, dirs, files in os.walk(ROOT):
-        dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
+        dirs[:] = [d for d in dirs
+                   if d not in SKIP_DIRS
+                   and not d.startswith(".")
+                   and not os.path.isdir(os.path.join(base, d, ".git"))]
         for name in files:
             if name.endswith(".html"):
                 out.append(rel(os.path.join(base, name)))

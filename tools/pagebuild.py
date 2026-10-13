@@ -176,6 +176,12 @@ def rewrite_chrome(indexable):
                   "publisher": org_node(),
                   "author": {"@type": "Organization", "name": BRAND}}
         s = HEAD_RE.sub(lambda _m: build_head(p, relpath, title, desc, img, ld, noindex), s, count=1)
+        if HEADER_RE.search(s):
+            s = HEADER_RE.sub(lambda _m: header(p), s, count=1)
+        s = FOOTER_RE.sub("", s)
+        s = WAFLOAT_RE.sub("", s)
+        s = JS_RE.sub("", s)
+        s = s.replace("</body>", footer(p) + "</body>")
         # Cloudflare Pages serves clean extensionless URLs; keep internal links on the same canonical form.
         if relpath != "404.html":
             def clean_href(match):
@@ -184,12 +190,6 @@ def rewrite_chrome(indexable):
                     path = path[:-5] or "."
                 return match.group("prefix") + path + match.group("suffix")
             s = re.sub(r'(?P<prefix>href=")(?P<path>(?:\.\./|/)?[^"#?]+)\.html(?P<suffix>(?:[?#][^"]*)?")', clean_href, s)
-        if HEADER_RE.search(s):
-            s = HEADER_RE.sub(lambda _m: header(p), s, count=1)
-        s = FOOTER_RE.sub("", s)
-        s = WAFLOAT_RE.sub("", s)
-        s = JS_RE.sub("", s)
-        s = s.replace("</body>", footer(p) + "</body>")
         write(rp(*relpath.split("/")), s)
         if not noindex:
             indexable.append(relpath)

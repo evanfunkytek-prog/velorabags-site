@@ -260,11 +260,11 @@ def footer(p):
     <div>
       <h4>Products</h4>
       <ul class="footer-links">
-        <li><a href="{p}products/jute-bags.html">Jute Bags</a></li>
-        <li><a href="{p}products/canvas-bags.html">Canvas Totes</a></li>
-        <li><a href="{p}products/non-woven-bags.html">Non-Woven Bags</a></li>
-        <li><a href="{p}products/woven-pp-bags.html">Woven PP Bags</a></li>
-        <li><a href="{p}products/backpack.html">Backpacks</a></li>
+        <li><a href="{p}products/jute-bags">Jute Bags</a></li>
+        <li><a href="{p}products/canvas-bags">Canvas Totes</a></li>
+        <li><a href="{p}products/non-woven-bags">Non-Woven Bags</a></li>
+        <li><a href="{p}products/woven-pp-bags">Woven PP Bags</a></li>
+        <li><a href="{p}products/backpack">Backpacks</a></li>
         <li><a href="{p}products">All Products</a></li>
       </ul>
     </div>
