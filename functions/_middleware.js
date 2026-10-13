@@ -34,6 +34,18 @@ const EXEMPT_PATHS = [/^\/api\//i, /^\/\.well-known\//i];
 const SEARCH_BOT_RE =
   /(googlebot|google-inspectiontool|bingbot|msnbot|yandexbot|duckduckbot|baiduspider|applebot|slurp|petalbot|sogou)/i;
 
+const INTERNAL_PATHS = [
+  /^\/tools\//i,
+  /^\/functions\//i,
+  /^\/\.git(\/|$)/i,
+  /^\/\.wrangler\//i,
+  /^\/\.cf-config\//i,
+  /^\/research\//i,
+  /^\/EliteBox-Packaging\//i,
+  /^\/[^/]+\.py$/i,
+  /^\/(README\.md|\.gitignore|\.gitattributes)$/i,
+];
+
 function parseLanguages(header) {
   return String(header || "")
     .split(",")
@@ -105,7 +117,17 @@ function classify(request) {
 
 export async function onRequest(context) {
   const { request, next } = context;
-
+  if (INTERNAL_PATHS.some((re) => re.test(new URL(request.url).pathname))) {
+    return new Response("Not Found", {
+      status: 404,
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "no-store",
+        "X-Robots-Tag": "noindex",
+      },
+    });
+  }
+ 
   let verdict;
   try {
     verdict = classify(request);
