@@ -3,6 +3,20 @@
 纯静态、无框架、无外部依赖的 **箱包 OEM/ODM 工厂独立站**（英文，面向欧美 B2B 买家）。
 结构参考相邻项目 `独立站项目`（目前结构最完善的制造型独立站），配色/文案/图形均为全新设计。
 
+## 目录归属（2026-10-13 拆分）
+本目录**只包含 Verlora Bags 项目**。原先混放在这里的 EliteBox Packaging（包装盒站）资料已在 2026-10-13 全部移出，放进同级的 `EliteBox-Packaging\`，并在 `.gitignore` 中排除，不会再进入本仓库、也不会进本项目的部署包。`EliteBox-Packaging\` 自身是一个**独立的 git 仓库**，与本仓库各自独立版本管理。
+
+| | 本项目 | 另一个项目 |
+| --- | --- | --- |
+| 项目 | Verlora Bags（箱包 OEM/ODM） | EliteBox Packaging（包装盒） |
+| 目录 | 本目录（仓库根） | `EliteBox-Packaging\` |
+| 线上站点 | https://www.verlorabags.com | https://www.eliteboxpacking.com |
+| Cloudflare Pages 项目 | `velorabags-site` | `eliteboxpacking` |
+| 部署方式 | 推送 GitHub 后由 Cloudflare Pages 自动构建 | 本地双击 `deploy.cmd` 手动上传 |
+| 说明文档 | 本文件 | `EliteBox-Packaging\README.md` |
+
+> ⚠️ 本目录是 git 仓库根目录，同时也是 GitHub 自动部署的站点根目录。**不要**把站点文件挪进子目录，否则线上构建会直接失效。
+
 ## 快速开始
 1. 直接双击打开 `index.html`，或
 2. 本地预览（推荐）：

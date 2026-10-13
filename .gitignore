@@ -1,3 +1,11 @@
 research/
 .DS_Store
 Thumbs.db
+.cloudflare/
+.cloudflare-token*
+.cf-cli/
+.npm-cache/
+deploy-log.txt
+.deploy-tmp/
+.cf-config/
+EliteBox-Packaging/
