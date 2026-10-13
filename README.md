@@ -27,11 +27,13 @@ python -m http.server 8000
 3. 上线：把整个文件夹上传到任意静态托管（nginx / 对象存储 / GitHub Pages）。
 
 ## 页面结构
-- 首页 `index.html`（含环保袋品类区块 Sustainable Totes & Packaging）；产品总览 `products.html`（20 款产品卡 + 前端筛选）
-- 产品详情 `products/`：共 42 个详情页（18 个品类页 + 24 个单品页），全部互链、无孤岛
-- 公司页：`about.html`、`factory-tour.html`、`certifications.html`、`industries.html`
-- 转化页：`quote.html`（询盘表单）、`contact.html`；法务页 `privacy.html`、`terms.html`（页脚全站可点）；`404.html`
-- 博客：`blog.html` + `blog/` 七篇文章（how-to-choose-bag-fabrics / bag-factory-qc-checklist / eco-reusable-bag-trends-2026 / eco-bag-material-guide / eco-bag-printing-qc / qc-checklist / backpack-materials-guide），七篇均已挂在博客列表页
+线上由 Cloudflare Pages 托管，内部链接、canonical 与 sitemap 统一使用无后缀地址（clean URL）；括号内为对应的源文件。
+- 首页 `/`（源文件 `index.html`，含环保袋品类区块 Sustainable Totes & Packaging）；产品总览 `/products`（源文件 `products.html`，20 款产品卡 + 前端筛选）
+- 产品详情 `products/`：共 42 个详情页（18 个品类页 + 24 个单品页），线上地址 `/products/<slug>`，全部互链、无孤岛
+- 公司页：`/about`、`/factory-tour`、`/certifications`、`/industries`（源文件为同名 `.html`）
+- 转化页：`/quote`（询盘表单）、`/contact`；法务页 `/privacy`、`/terms`（页脚全站可点）；错误页 `/404.html`（源文件 `404.html`）
+- 错误页链接约定：`404.html` 会被 Cloudflare Pages 用于**任意**不存在的路径，因此页内链接一律写根绝对路径（`/`、`/products`）。若写成相对路径，访问 `/products/xxx` 时浏览器会按 `/products/` 目录解析，样式表与导航会全部失效。
+- 博客：`/blog` + `blog/` 七篇文章（how-to-choose-bag-fabrics / bag-factory-qc-checklist / eco-reusable-bag-trends-2026 / eco-bag-material-guide / eco-bag-printing-qc / qc-checklist / backpack-materials-guide），七篇均已挂在博客列表页
 - 内部资料：`research/`（环保袋/编织袋竞品调研，本地参考用；已由 `.gitignore` 排除，不进公开仓库）
 - 资产：`assets/css/style.css`（设计系统）、`assets/js/main.js`（导航/筛选/FAQ/表单）、`assets/svg/`（全部自绘矢量插画）
 - 后端函数：`functions/api/quote.js`（Cloudflare Pages Function，接收询盘表单 POST）
@@ -46,7 +48,7 @@ python -m http.server 8000
 - 地址：No. 8 Huasheng Rd, Shiling, Huadu District, Guangzhou, China
 - 联系方式：主询盘 `evan.funkytek@gmail.com`（页脚/表单/全站 mailto）；售后支持 `support@verlorabags.com`（contact.html 展示卡）
 - 产品图：主类目使用 `assets/img/*.webp`（AI 生成风格化产品示意，统一暖奶油底、无品牌标识）；拿到自家产品实拍图后可直接同路径替换
-- SEO：`sitemap.xml`（60 URL，www 为规范域）+ `robots.txt` 已随仓库部署；认证编号、报价、MOQ（300 pcs/款/配色）、交期仍为可编辑示例数据
+- SEO：`sitemap.xml`（68 URL，www 为规范域，只收录本仓库实际存在的页面）+ `robots.txt` 已随仓库部署；认证编号、报价、MOQ（300 pcs/款/配色）、交期仍为可编辑示例数据
 
 ## 询盘表单后端（新增）
 表单提交后先 POST 到 `/api/quote`（`functions/api/quote.js`）。**接口未配置或调用失败时，自动回退为原来的 `mailto:` 方案，线索不会丢。**
