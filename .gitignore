@@ -9,3 +9,9 @@ deploy-log.txt
 .deploy-tmp/
 .cf-config/
 EliteBox-Packaging/
+__pycache__/
+*.pyc
+.wrangler/
+Verlora-索引修复-20261013/
+_patchtest.txt
+_tmp_probe_write.txt
