@@ -12,7 +12,10 @@ from common import pages
 
 
 def indexable():
-    return [p for p in pages() if p != "404.html"]
+    # Keep legal documents available to users, but do not advertise them in
+    # the XML sitemap unless the business explicitly wants them indexed.
+    excluded = {"404.html", "privacy.html", "terms.html"}
+    return [p for p in pages() if p not in excluded]
 
 
 def stage_css():
