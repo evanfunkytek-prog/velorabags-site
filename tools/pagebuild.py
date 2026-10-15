@@ -225,7 +225,7 @@ def rewrite_chrome(indexable):
                   "dateModified": iso_dt(C.BUILD_DATE),
                   "mainEntityOfPage": abs_url(relpath),
                   "publisher": org_node(),
-                  "author": {"@type": "Organization", "name": BRAND}}
+                  "author": {"@type": "Organization", "name": BRAND, "url": SITE + "/"}}
         s = HEAD_RE.sub(lambda _m: build_head(p, relpath, title, desc, img, ld, noindex), s, count=1)
         chrome_head, chrome_foot = header(p), footer(p)
         if p == "/":
