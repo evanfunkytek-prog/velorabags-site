@@ -1,5 +1,10 @@
 # Verlora Bags — 箱包独立站（Custom Bag & Luggage Manufacturer Site）
 
+> ⚠️ **先认清你在改哪个站：本目录 = Verlora Bags，改动只会发到 https://www.verlorabags.com。**
+> 如果你手上是 **EliteBox Packaging** 的工单（目标站点 `https://www.eliteboxpacking.com`），**不要在这里动手**——它的部署源是
+> `C:\Users\Administrator\AccioWork\2026-09-03-08-22-04-529-aa57469b\elitebox-content\deploy\sitebundle`，由 **Accio 直传**上线，
+> 与本仓库、GitHub、Cloudflare 自动构建全都无关。反之，本目录的 `git push` 也永远不会影响 eliteboxpacking.com。详细对照见下方「目录归属」。
+
 纯静态、无框架、无外部依赖的 **箱包 OEM/ODM 工厂独立站**（英文，面向欧美 B2B 买家）。
 结构参考相邻项目 `独立站项目`（目前结构最完善的制造型独立站），配色/文案/图形均为全新设计。
 
