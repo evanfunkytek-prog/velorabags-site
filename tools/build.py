@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 """Verlora Bags static site build pipeline.
 
-Usage:  python tools/build.py [css|product|europe|chrome|seo|package|all]
+Usage:  python tools/build.py [css|product|europe|chrome|seo|package|verify|all]
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-import templates, productbuild, europebuild, pagebuild, seobuild, packagebuild
+import assetcheck, templates, productbuild, europebuild, pagebuild, seobuild, packagebuild
 from common import pages
 
 
@@ -53,8 +53,16 @@ def stage_package():
           % (kept, wanted, files, size / 1048576))
 
 
+def stage_verify():
+    # Not part of "all" on purpose: this is the gate to run before pushing.
+    if assetcheck.main():
+        raise SystemExit("asset check failed - fix the errors above before pushing")
+    print("  verify   -> assets OK")
+
+
 STAGES = {"css": stage_css, "product": stage_product, "europe": stage_europe,
-          "chrome": stage_chrome, "seo": stage_seo, "package": stage_package}
+          "chrome": stage_chrome, "seo": stage_seo, "package": stage_package,
+          "verify": stage_verify}
 
 if __name__ == "__main__":
     which = sys.argv[1] if len(sys.argv) > 1 else "all"
