@@ -142,6 +142,7 @@ def org_node():
             "email": EMAIL, "telephone": PHONE,
             "address": {"@type": "PostalAddress",
                         "streetAddress": "No. 8 Huasheng Rd, Shiling",
+                        "postalCode": "510800",
                         "addressLocality": "Guangzhou",
                         "addressRegion": "Guangdong",
                         "addressCountry": "CN"}}
