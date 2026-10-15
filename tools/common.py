@@ -137,6 +137,7 @@ def jsonld(obj):
 
 def org_node():
     return {"@type": "Organization", "name": BRAND, "url": SITE + "/",
+            "image": SITE + "/assets/img/factory-hero.webp",
             "logo": SITE + "/assets/svg/logo.svg",
             "email": EMAIL, "telephone": PHONE,
             "address": {"@type": "PostalAddress",
