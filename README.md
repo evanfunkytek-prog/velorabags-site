@@ -3,20 +3,14 @@
 纯静态、无框架、无外部依赖的 **箱包 OEM/ODM 工厂独立站**（英文，面向欧美 B2B 买家）。
 结构参考相邻项目 `独立站项目`（目前结构最完善的制造型独立站），配色/文案/图形均为全新设计。
 
-## 目录归属（2026-10-13 拆分 / 剥离；物理外移待执行）
+## 目录归属（2026-10-13 拆分 / 剥离；物理外移已于 2026-10-15 完成）
 
-本目录**只包含 Verlora Bags 项目**。EliteBox Packaging（包装盒站）的资料已在 2026-10-13 从本仓库的部署链、凭证与文档里彻底剥离；**物理外移**还差最后一步，由委托方双击下面这个脚本完成（同盘移动、秒级，脚本自带"目标已存在就中止"的保护）：
-
-```text
-C:\Users\Administrator\Documents\ChatGPT\箱包独立站项目\.wrangler\把EliteBox-Packaging移出仓库.cmd
-```
-
-执行完，两个项目就是两个**同级独立文件夹**：`C:\Users\Administrator\Documents\ChatGPT\EliteBox-Packaging\`。此后文件、脚本、凭证、git 仓库全部分开，互不扫描、互不部署——不会再出现"一边的构建/部署脚本动到另一边站点"的交叉感染。（`.gitignore` 里仍保留 `EliteBox-Packaging/` 排除项，防止它被重新放回本仓库。）
+本目录**只包含 Verlora Bags 项目**。EliteBox Packaging（包装盒站）已在 2026-10-13 从本仓库的部署链、凭证与文档里彻底剥离；**物理外移**已于 2026-10-15 核实完成：本目录下不再有 `EliteBox-Packaging\`，它现在是同级独立文件夹 `C:\Users\Administrator\Documents\ChatGPT\EliteBox-Packaging`（自带独立 git 仓库）。此后文件、脚本、凭证、git 仓库全部分开，互不扫描、互不部署，不会再出现一边的构建/部署脚本动到另一边站点的交叉感染。（`.gitignore` 里仍保留 `EliteBox-Packaging/` 排除项，防止它被重新放回本仓库。）
 
 | | 本项目 | 另一个项目 |
 | --- | --- | --- |
 | 项目 | Verlora Bags（箱包 OEM/ODM） | EliteBox Packaging（包装盒） |
-| 目录 | `C:\Users\Administrator\Documents\ChatGPT\箱包独立站项目`（本目录，即仓库根） | 目标 `C:\Users\Administrator\Documents\ChatGPT\EliteBox-Packaging`（外移执行前暂位于本目录下的 `EliteBox-Packaging\`） |
+| 目录 | `C:\Users\Administrator\Documents\ChatGPT\箱包独立站项目`（本目录，即仓库根） | `C:\Users\Administrator\Documents\ChatGPT\EliteBox-Packaging`（同级独立目录，外移已完成） |
 | 线上站点 | https://www.verlorabags.com | https://www.eliteboxpacking.com |
 | Cloudflare Pages 项目 | `velorabags-site`（Git 自动构建） | `eliteboxpacking`（直传，无 Git 连接） |
 | 部署方式 | 推送到 GitHub 后由 Cloudflare Pages 自动构建 | **Accio** 从 `C:\Users\Administrator\AccioWork\2026-09-03-08-22-04-529-aa57469b\elitebox-content\deploy\` 执行 wrangler 直传 |
