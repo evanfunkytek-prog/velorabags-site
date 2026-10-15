@@ -14,6 +14,47 @@ JS_RE = re.compile(r'<script src="[^"]*main\.js[^"]*"></script>', re.I)
 TITLE_RE = re.compile(r"<title>(.*?)</title>", re.S)
 DESC_RE = re.compile(r'<meta name="description" content="(.*?)">', re.S)
 IMG_RE = re.compile(r'<img[^>]+src="([^"]+)"[^>]*>', re.I)
+IMG_TAG_RE = re.compile(r'<img\b[^>]*>', re.I)
+
+
+def add_lazy_loading(s):
+    """Lazy-load below-the-fold content images without delaying the hero image."""
+    first_content_image = False
+
+    def replace(match):
+        nonlocal first_content_image
+        tag = match.group(0)
+        src_match = re.search(r'\bsrc="([^"]+)"', tag, re.I)
+        src = src_match.group(1).lower() if src_match else ""
+        if (not src or src.endswith(".svg") or "logo.svg" in src
+                or "favicon" in src or "wa-float" in src):
+            return tag
+        if "loading=" in tag.lower():
+            first_content_image = True
+            return tag
+        if not first_content_image:
+            first_content_image = True
+            return tag
+        if tag.rstrip().endswith("/>"):
+            return tag.rstrip()[:-2].rstrip() + ' loading="lazy"/>'
+        return tag[:-1] + ' loading="lazy">'
+
+    return IMG_TAG_RE.sub(replace, s)
+
+
+def add_blog_resource_links(s, p):
+    """Give every article useful paths to products, solutions and quotation."""
+    if 'data-seo-related-resources="blog"' in s:
+        return s
+    block = """<section class="section" data-seo-related-resources="blog" style="background:var(--cream-100);border-top:1px solid var(--line)">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">Next steps</span><h2>Plan your bag programme</h2></div>
+    <p class="lead">Compare relevant <a href="{p}products/jute-bags">material programmes</a>, review <a href="{p}products/backpack">travel bag options</a>, or explore our <a href="{p}industries">industry solutions</a> before sending a brief.</p>
+    <p><a class="btn btn-primary" href="{p}quote">Request a factory quote</a> <a class="btn" href="{p}factory-tour">See the Guangzhou factory</a></p>
+  </div>
+</section>
+""".format(p=p)
+    return s.replace("</main>", block + "</main>", 1)
 
 
 def main_image(s):
@@ -36,7 +77,7 @@ def build_head(p, relpath, title, desc, image, ld=None, noindex=False):
         out.append('<meta name="description" content="%s">' % esc(desc))
     if noindex:
         out.append('<meta name="robots" content="noindex, follow">')
-    else:
+    if relpath != "404.html":
         out.append('<link rel="canonical" href="%s">' % abs_url(relpath))
     ogtype = "article" if (relpath.startswith("blog/")) else "website"
     out += ['<meta property="og:type" content="%s">' % ogtype,
@@ -110,20 +151,20 @@ def rewrite_chrome(indexable):
     prods = {x["file"]: x for x in collect_products()}
     seo_overrides = {
         "index.html": (
-            "Verlora Bags | Custom Travel & Reusable Bag Manufacturer",
-            "Verlora Bags manufactures custom travel, weekender, backpack, tote and reusable bags for brands and retailers. OEM/ODM production from Guangzhou with custom materials, branding and MOQ from 100 pcs.",
+            "Custom Bags Manufacturer | Guangzhou OEM/ODM Factory",
+            "Custom bags from a Guangzhou factory: OEM/ODM travel, jute, canvas and reusable bag programmes for brands and retailers. Request a quote.",
         ),
         "products/duffel-weekender.html": (
             "Custom Duffel & Weekender Bags for Travel | Verlora Bags",
             "Custom duffel and weekender bags for travel and gym programs, with reinforced bases, shoe compartments, trolley sleeves and branding. MOQ 300 pcs, OEM/ODM.",
         ),
         "products/travel-shoulder-bag.html": (
-            "Custom Travel Shoulder Bags | OEM Travel Bag Manufacturer | Verlora",
-            "Custom travel shoulder bags with adjustable straps and secure zip compartments for everyday trips and travel programs. MOQ 300 pcs, custom branding and OEM/ODM.",
+            "Custom Travel Shoulder Bags | OEM/ODM Manufacturer",
+            "Custom travel shoulder bags with adjustable straps and zip compartments. OEM/ODM branding, MOQ 300 pcs and factory-direct production.",
         ),
         "products/backpack.html": (
-            "Custom Laptop Backpacks for Travel & Commuting | Verlora Bags",
-            "Custom laptop backpacks for travel and commuting with padded 14-17 inch sleeves, 600D polyester or canvas shells and branded details. MOQ 300 pcs per style.",
+            "Custom Laptop Backpacks | OEM/ODM Manufacturer",
+            "Custom laptop backpacks with padded 14-17 inch sleeves, durable shells and branded details. OEM/ODM production from Guangzhou, MOQ 300 pcs.",
         ),
     }
     for relpath in pages():
@@ -140,12 +181,16 @@ def rewrite_chrome(indexable):
             share = C.BLOG_IMAGES.get(relpath.split("/", 1)[1])
             if share:
                 img = asset_url(share)
-        noindex = relpath == "404.html"
+        noindex = relpath in {"404.html", "privacy.html", "terms.html"}
         ld = None
         if relpath == "index.html":
+            organization = org_node()
+            organization["@id"] = SITE + "/#organization"
             ld = {"@context": "https://schema.org", "@graph": [
-                org_node(),
-                {"@type": "WebSite", "name": BRAND, "url": SITE + "/"}]}
+                organization,
+                {"@type": "WebSite", "@id": SITE + "/#website",
+                 "name": BRAND, "url": SITE + "/",
+                 "publisher": {"@id": SITE + "/#organization"}}]}
         elif relpath.startswith("products/"):
             prod = prods.get(relpath.split("/", 1)[1])
             if prod:
@@ -154,14 +199,20 @@ def rewrite_chrome(indexable):
                     desc = seo_overrides[relpath][1]
                 if not desc:
                     desc = prod["blurb"]
+                organization = org_node()
+                organization["@id"] = SITE + "/#organization"
                 ld = {"@context": "https://schema.org", "@graph": [
+                    organization,
+                    {"@type": "WebSite", "@id": SITE + "/#website",
+                     "name": BRAND, "url": SITE + "/",
+                     "publisher": {"@id": SITE + "/#organization"}},
                     {"@type": "Product", "name": prod["name"],
                      "image": asset_url(prod["image"]),
                      "description": desc,
                      "category": cat["label"],
                      "material": cat["material"],
                      "brand": {"@type": "Brand", "name": BRAND},
-                     "manufacturer": org_node(),
+                     "manufacturer": {"@id": SITE + "/#organization"},
                      "url": abs_url(relpath)},
                     {"@type": "BreadcrumbList", "itemListElement": [
                         {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
@@ -195,6 +246,9 @@ def rewrite_chrome(indexable):
                     path = path[:-5] or "."
                 return match.group("prefix") + path + match.group("suffix")
             s = re.sub(r'(?P<prefix>href=")(?P<path>(?:\.\./|/)?[^"#?]+)\.html(?P<suffix>(?:[?#][^"]*)?")', clean_href, s)
+        if relpath.startswith("blog/") and relpath != "blog.html":
+            s = add_blog_resource_links(s, p)
+        s = add_lazy_loading(s)
         s = tidy(s)
         write(rp(*relpath.split("/")), s)
         if not noindex:
