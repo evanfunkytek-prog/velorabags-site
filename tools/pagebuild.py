@@ -3,7 +3,7 @@
 import os, re
 import content as C
 from common import (rp, read, write, pages, esc, plain, abs_url, asset_url, tidy,
-                    jsonld, org_node, SITE, BRAND, CSS_VERSION, link_prefix)
+                    jsonld, org_node, iso_dt, SITE, BRAND, CSS_VERSION, link_prefix)
 from templates import header, footer
 
 HEAD_RE = re.compile(r"<head>.*?</head>", re.S)
@@ -221,8 +221,8 @@ def rewrite_chrome(indexable):
         elif relpath.startswith("blog/") and relpath != "blog.html":
             ld = {"@context": "https://schema.org", "@type": "Article",
                   "headline": title, "description": desc, "image": img,
-                  "datePublished": C.BLOG_DATES.get(relpath.split("/", 1)[1], C.BUILD_DATE),
-                  "dateModified": C.BUILD_DATE,
+                  "datePublished": iso_dt(C.BLOG_DATES.get(relpath.split("/", 1)[1], C.BUILD_DATE)),
+                  "dateModified": iso_dt(C.BUILD_DATE),
                   "mainEntityOfPage": abs_url(relpath),
                   "publisher": org_node(),
                   "author": {"@type": "Organization", "name": BRAND}}

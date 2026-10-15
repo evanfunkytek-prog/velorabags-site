@@ -135,6 +135,11 @@ def jsonld(obj):
             + "</script>")
 
 
+def iso_dt(day):
+    """ISO 8601 date-time with timezone for structured-data date fields."""
+    return day if "T" in day else day + "T00:00:00+08:00"
+
+
 def org_node():
     return {"@type": "Organization", "name": BRAND, "url": SITE + "/",
             "image": SITE + "/assets/img/factory-hero.webp",
