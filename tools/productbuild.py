@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Regenerate thin product detail pages and rebuild the catalog page."""
 import os, re, html
+import urllib.parse
 import content as C
 from common import rp, read, write, esc, plain, WA, BRAND
 from pagebuild import collect_products, CATEGORY_TABS
@@ -86,6 +87,7 @@ def pdp_main(prod, p, lead, s):
     name = prod["name"]
     img = prod["image"].replace("../", "")
     q = html.escape(name, quote=True)
+    qenc = urllib.parse.quote(name, safe="")
     hero_rows = [
         ("Material", cat["material"].split(",")[0], ICON_BOX),
         ("MOQ", "300 pcs per style", ICON_STACK),
@@ -128,7 +130,7 @@ def pdp_main(prod, p, lead, s):
         {hero}
       </dl>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="{p}quote.html?product={q}">Request a quote</a>
+        <a class="btn btn-primary" href="{p}quote#product={qenc}" data-quote-product="{q}">Request a quote</a>
         <a class="btn btn-whatsapp" href="{wa}" target="_blank" rel="noopener">WhatsApp us</a>
       </div>
     </div>
@@ -179,10 +181,10 @@ def pdp_main(prod, p, lead, s):
   <div class="container">
     <b>Ready to spec this style?</b>
     <span style="color:rgba(255,255,255,.9)">Share your target price and volume &mdash; we reply within one business day.</span>
-    <a class="btn" href="{p}quote.html?product={q}">Get a quote</a>
+    <a class="btn" href="{p}quote#product={qenc}" data-quote-product="{q}">Get a quote</a>
   </div>
 </section>
-</main>""".format(p=p, q=q, wa=WA, name=esc(name), img=p + img, catlabel=esc(cat["label"]),
+</main>""".format(p=p, q=q, qenc=qenc, wa=WA, name=esc(name), img=p + img, catlabel=esc(cat["label"]),
                   lead=esc(lead), hero=fact_rows(hero_rows), intro=esc(intro),
                   cards="\n      ".join(cards), attrs=attr_rows(cat_attrs(prod)),
                   faq=faq_items(faq), related=related_cards(others, p))

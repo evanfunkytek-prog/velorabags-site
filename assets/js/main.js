@@ -159,9 +159,12 @@
       });
     });
 
-    // Prefill inquiry product from URL param or data attributes
+    // Prefill inquiry product from fragment, legacy query, session or data attributes
+    var hashParams=new URLSearchParams((location.hash||'').replace(/^#/,''));
     var urlParams=new URLSearchParams(location.search);
-    var wanted=(urlParams.get('product')||'').trim();
+    var storedProduct='';
+    try{ storedProduct=sessionStorage.getItem('quoteProduct')||''; }catch(e){}
+    var wanted=(hashParams.get('product')||urlParams.get('product')||storedProduct||'').trim();
     var productSel=document.getElementById('product');
     if(wanted&&productSel){
       var wl=wanted.toLowerCase(),matched=false;
@@ -173,6 +176,12 @@
     }
     document.querySelectorAll('[data-product-name]').forEach(function(el){
       if(productSel) productSel.value=el.getAttribute('data-product-name');
+    });
+    // Remember the product on click so the quote form prefills even after a refresh
+    document.querySelectorAll('[data-quote-product]').forEach(function(link){
+      link.addEventListener('click',function(){
+        try{ sessionStorage.setItem('quoteProduct',link.getAttribute('data-quote-product')); }catch(e){}
+      });
     });
 
     // Year in footer
