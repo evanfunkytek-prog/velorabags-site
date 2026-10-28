@@ -1,9 +1,33 @@
 # -*- coding: utf-8 -*-
 """sitemap.xml / robots.txt generation."""
+import os
+import re
+import subprocess
+
 import content as C
 from common import rp, write, SITE
 
 BUILD_DATE = C.BUILD_DATE
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_dates = {}
+
+
+def last_modified(relpath):
+    """Real last commit date for a page, so lastmod is not a single build stamp."""
+    if relpath in _dates:
+        return _dates[relpath]
+    date = ""
+    try:
+        out = subprocess.run(
+            ["git", "log", "-1", "--format=%cs", "--", relpath.replace("\\", "/")],
+            cwd=REPO_ROOT, capture_output=True, text=True, timeout=15)
+        date = out.stdout.strip()
+    except Exception:
+        date = ""
+    if not re.match(r"^\d{4}-\d{2}-\d{2}$", date):
+        date = BUILD_DATE
+    _dates[relpath] = date
+    return date
 
 
 def clean_path(relpath):
@@ -13,8 +37,9 @@ def clean_path(relpath):
     return relpath[:-5] if relpath.endswith(".html") else relpath
 
 
-def entry(relpath, priority, freq, date=BUILD_DATE):
+def entry(relpath, priority, freq, date=None):
     clean = clean_path(relpath)
+    date = date or last_modified(relpath)
     loc = SITE + "/" if not clean else SITE + "/" + clean
     return ("  <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq>"
             "<priority>%.1f</priority></url>" % (loc, date, freq, priority))
