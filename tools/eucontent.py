@@ -16,7 +16,7 @@ PAGES = [
         slug="europe.html",
         crumb="Europe & the EU",
         title="Custom Bags for European Importers | Verlora Bags",
-        desc="OEM tote and reusable bag production for European importers: DDP delivery, EORI and VAT paperwork, EPR-ready materials. MOQ 300 pcs per style.",
+        desc="OEM tote and reusable bag production for European importers: DDP delivery, EORI and VAT paperwork, EPR-ready materials. MOQ 100 standard / 300 custom.",
         image="assets/img/hero-bags-full.webp",
         main="""
 <section class="page-hero">
@@ -31,7 +31,7 @@ PAGES = [
     <div class="section-head reveal"><span class="eyebrow">How an order runs</span><h2>From Tech Pack to Your European Warehouse</h2><p class="lead">One account manager, English-language communication, and a schedule you can build a retail calendar around.</p></div>
     <div class="steps">
       <div class="step reveal"><h3>Quote &amp; spec review</h3><p>Send drawings, target price and volume. We reply within one business day with costing options and the fabric that fits your price position.</p></div>
-      <div class="step reveal delayed-1"><h3>Sampling</h3><p>A pre-production sample in 7&ndash;10 days, shipped by DHL or FedEx so your buyer can approve it in days rather than weeks.</p></div>
+      <div class="step reveal delayed-1"><h3>Sampling</h3><p>A pre-production sample in 3&ndash;5 days, shipped by DHL or FedEx so your buyer can approve it in days rather than weeks.</p></div>
       <div class="step reveal delayed-2"><h3>Bulk production</h3><p>15&ndash;25 days after sample approval, with in-line checks, an AQL final inspection and photo reports before the cartons are sealed.</p></div>
       <div class="step reveal delayed-3"><h3>Delivery</h3><p>Sea, rail or air into your warehouse under DDP, or DAP and FOB if you would rather use your own forwarder.</p></div>
     </div>
@@ -92,7 +92,7 @@ PAGES = [
             ("Do you charge EU VAT?",
              "No. We are a China-based manufacturer without an EU VAT number, so we do not charge EU VAT on export orders. Import VAT is settled by the importer, or by our freight partner when the order is shipped DDP."),
             ("What is the minimum order for a European programme?",
-             "MOQ is 300 pcs per style for most bag types, and 100 pcs on selected promotional lines. Mixed colourways can be combined within one style to reach the minimum."),
+             "MOQ is 100 pcs for standard styles and 300 pcs for custom development. Confirm the applicable minimum for promotional lines in the quotation. Mixed colourways can be combined within one style to reach the minimum."),
         ],
         cta=("The next step", "Get a Landed Cost for Your European Programme",
              "Send your spec, target price and destination warehouse. We will come back within one business day with costing and a realistic delivery window.",
@@ -333,7 +333,7 @@ PAGES = [
             ("Does the bag need French text?",
              "Consumer-facing information on packaging sold in France is generally expected in French. We reserve artwork space for your French wording and can lay it out with the rest of the print so nothing has to be redesigned later."),
             ("What are your MOQs for a boutique programme?",
-             "300 pcs per style for most constructions, with mixed colourways counting toward the same style. Selected promotional lines start at 100 pcs."),
+             "100 pcs for standard styles and 300 pcs for custom development. Confirm the applicable minimum for each construction and colourway in the quotation."),
         ],
         cta=("France", "Start a French Programme",
              "Send your brief, artwork direction and target cost. We will come back within one business day with a sampled route to market.",
@@ -416,7 +416,7 @@ PAGES = [
         crumb="Poland",
         parent="Europe & the EU",
         title="Custom Bags for Polish Brands: EPR & BDO | Verlora Bags",
-        desc="Custom bag manufacturing for Polish brands and importers: BDO registration data, EPR support, Gdansk sea routing and MOQ from 300 pcs per style.",
+        desc="Custom bag manufacturing for Polish brands and importers: BDO registration data, EPR support, Gdansk sea routing and MOQ 100 standard / 300 custom.",
         image="assets/img/solution-promo.webp",
         main="""
 <section class="page-hero">
@@ -487,7 +487,7 @@ PAGES = [
         crumb="Czechia",
         parent="Europe & the EU",
         title="Custom Bags for Czech Brands: EKO-KOM & EPR | Verlora Bags",
-        desc="Custom bag production for Czech brands with EKO-KOM compliance data, Prague and Brno delivery, and promotional and retail programmes from 300 pcs.",
+        desc="Custom bag production for Czech brands with EKO-KOM data, Prague and Brno delivery, and retail or promo programmes from 100 pcs standard / 300 custom.",
         image="assets/img/solution-gifts.webp",
         main="""
 <section class="page-hero">
@@ -558,7 +558,7 @@ PAGES = [
         crumb="Romania",
         parent="Europe & the EU",
         title="Custom Bags for Romanian Brands: EPR & DDP | Verlora Bags",
-        desc="Custom bag manufacturing for Romanian brands: EPR obligations, Constanta sea freight, DDP delivery and cost-engineered programmes from 300 pcs per style.",
+        desc="Custom bag production for Romanian brands: EPR support, Constanta sea freight, DDP delivery and programmes from 100 pcs standard / 300 custom.",
         image="assets/img/solution-corporate.webp",
         main="""
 <section class="page-hero">
@@ -578,7 +578,7 @@ PAGES = [
         <li>Substrate and gsm chosen against your target shelf price</li>
         <li>Print method selected for the run length you actually need</li>
         <li>Freight optimised through Constan&#539;a and the Black Sea corridor</li>
-        <li>Volume breaks from 300 pcs upward, with mixed colourways counted together</li>
+        <li>Volume breaks from 100 pcs upward for standard styles; custom development from 300 pcs, with mixed colourways counted together</li>
       </ul>
       <a class="btn btn-primary" href="../quote.html">Request a Romanian Programme Quote</a>
     </div>

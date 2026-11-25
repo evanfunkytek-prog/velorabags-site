@@ -151,20 +151,76 @@ def rewrite_chrome(indexable):
     prods = {x["file"]: x for x in collect_products()}
     seo_overrides = {
         "index.html": (
-            "Custom Bags Manufacturer | Guangzhou OEM/ODM Factory",
-            "Custom bags from a Guangzhou factory: OEM/ODM travel, jute, canvas and reusable bag programmes for brands and retailers. Request a quote.",
+            "Custom Handbag & Bag Manufacturer | OEM/ODM | Verlora Bags",
+            "Custom handbags, totes, crossbody and travel bags from a Guangzhou OEM/ODM factory. MOQ 100 standard / 300 custom.",
+        ),
+        "products.html": (
+            "Custom Bags Catalog | OEM/ODM Products | Verlora Bags",
+            "Explore custom handbags, totes, backpacks, travel bags and reusable packaging from a Guangzhou OEM/ODM factory. Standard styles from 100 pcs; custom orders from 300 pcs.",
+        ),
+        "custom-handbags.html": (
+            "Custom Handbags & Fashion Totes | OEM Manufacturer",
+            "OEM/ODM handbags and fashion totes in PU leather, canvas and linen. Standard styles from 100 pcs; custom orders from 300 pcs. Customize shape, lining, hardware, logo and packaging.",
+        ),
+        "products/handbag-tote.html": (
+            "Custom Handbags & Fashion Totes | OEM/ODM",
+            "Custom handbags and everyday totes in PU leather, coated canvas or washed cotton. Standard styles from 100 pcs; custom orders from 300 pcs.",
+        ),
+        "products/crossbody-sling.html": (
+            "Custom Crossbody & Sling Bags | OEM/ODM",
+            "Custom crossbody and sling bags with adjustable straps, branded hardware and practical compartments. Standard styles from 100 pcs; custom orders from 300 pcs.",
+        ),
+        "products/jute-bags.html": (
+            "Custom Jute Shopping Bags | OEM/ODM",
+            "Custom jute shopping bags with printed branding, flexible handles and export packing. Standard styles from 100 pcs; custom orders from 300 pcs.",
         ),
         "products/duffel-weekender.html": (
             "Custom Duffel & Weekender Bags for Travel | Verlora Bags",
-            "Custom duffel and weekender bags for travel and gym programs, with reinforced bases, shoe compartments, trolley sleeves and branding. MOQ 300 pcs, OEM/ODM.",
+            "Custom duffel and weekender bags for travel and gym programs. MOQ 100 standard / 300 custom.",
         ),
         "products/travel-shoulder-bag.html": (
             "Custom Travel Shoulder Bags | OEM/ODM Manufacturer",
-            "Custom travel shoulder bags with adjustable straps and zip compartments. OEM/ODM branding, MOQ 300 pcs and factory-direct production.",
+            "Custom travel shoulder bags with adjustable straps and zip compartments. OEM/ODM branding, MOQ 100 standard / 300 custom.",
         ),
         "products/backpack.html": (
             "Custom Laptop Backpacks | OEM/ODM Manufacturer",
-            "Custom laptop backpacks with padded 14-17 inch sleeves, durable shells and branded details. OEM/ODM production from Guangzhou, MOQ 300 pcs.",
+            "Custom laptop backpacks with padded 14-17 inch sleeves, durable shells and branded details. OEM/ODM production from Guangzhou, MOQ 100 standard / 300 custom.",
+        ),
+        "blog/bag-factory-qc-checklist.html": (
+            "Bag QC Checklist for Importers | Verlora Bags",
+            "A practical quality control checklist for importing custom bags from Guangzhou, covering materials, stitching, branding, testing and shipment checks.",
+        ),
+        "blog/eco-reusable-bag-trends-2026.html": (
+            "2026 Reusable Bag Trends | Verlora Bags",
+            "Explore recycled materials, water-based inks and lower-impact packaging options shaping reusable bag programmes in 2026.",
+        ),
+        "blog/handbag-materials-pu-canvas-linen.html": (
+            "PU, Canvas or Linen Handbag Materials | Verlora",
+            "Compare PU leather, PU-trimmed, canvas and linen handbag constructions, with sourcing questions for structure, lining, hardware and sampling.",
+        ),
+        "blog/custom-handbag-development-sketch-to-sample.html": (
+            "Custom Handbag Development: Sketch to Sample",
+            "A practical sketch-to-sample workflow for custom handbags: tech pack, dimensions, materials, hardware, sample review and bulk approval.",
+        ),
+        "blog/custom-handbag-moq-sampling-lead-time.html": (
+            "Custom Handbag MOQ, Sampling & Lead Time",
+            "Plan a custom handbag order with MOQ 100 for standard styles, MOQ 300 for custom development, 3-5 day sampling and 15-25 day production.",
+        ),
+        "blog/custom-canvas-tote-bags-spec-guide.html": (
+            "Custom Canvas Tote Bags: Spec & Print Guide",
+            "A buyer's guide to custom canvas totes: fabric weight, handles, gussets, lining, printing, MOQ, sampling and QC.",
+        ),
+        "blog/custom-travel-bags-backpacks-oem-guide.html": (
+            "Custom Travel Bags & Backpacks: OEM Guide",
+            "Specify custom duffels, travel shoulder bags and laptop backpacks: materials, structure, branding, testing, MOQ and lead time.",
+        ),
+        "blog/custom-promotional-bags-corporate-guide.html": (
+            "Custom Promotional Bags for Corporate Programs",
+            "Compare non-woven, woven PP, paper, jute and canvas promotional bags, plus printing, MOQ, sampling, QC and packing.",
+        ),
+        "products/personalized-coated-linen-bag.html": (
+            "Custom Coated Linen Bag | OEM/ODM | Verlora",
+            "Custom coated linen bags with personalized branding for gifting and retail programmes. MOQ 100 standard / 300 custom.",
         ),
     }
     for relpath in pages():
@@ -176,6 +232,11 @@ def rewrite_chrome(indexable):
         desc = plain(d.group(1)) if d else ""
         if relpath in seo_overrides:
             title, desc = seo_overrides[relpath]
+        desc = desc.replace("Standard styles from 100 pcs; custom orders from 300 pcs", "MOQ 100 standard / 300 custom")
+        if relpath == "products.html":
+            desc = "Explore custom handbags, totes, backpacks, travel bags and reusable packaging from a Guangzhou OEM/ODM factory. MOQ 100 standard / 300 custom."
+        if relpath.startswith("products/") and len(desc) > 160:
+            desc = "Custom " + plain(title).split("|")[0].strip() + ". MOQ 100 standard / 300 custom. OEM/ODM production from Guangzhou."
         img = asset_url(main_image(s))
         if relpath.startswith("blog/") and relpath != "blog.html":
             share = C.BLOG_IMAGES.get(relpath.split("/", 1)[1])
@@ -191,6 +252,22 @@ def rewrite_chrome(indexable):
                 {"@type": "WebSite", "@id": SITE + "/#website",
                  "name": BRAND, "url": SITE + "/",
                  "publisher": {"@id": SITE + "/#organization"}}]}
+        elif relpath == "custom-handbags.html":
+            organization = org_node()
+            organization["@id"] = SITE + "/#organization"
+            ld = {"@context": "https://schema.org", "@graph": [
+                organization,
+                {"@type": "WebSite", "@id": SITE + "/#website",
+                 "name": BRAND, "url": SITE + "/",
+                 "publisher": {"@id": SITE + "/#organization"}},
+                {"@type": "CollectionPage", "name": title,
+                 "description": desc, "url": abs_url(relpath),
+                 "isPartOf": {"@id": SITE + "/#website"},
+                 "about": {"@type": "Thing", "name": "Custom handbags and fashion totes"}},
+                {"@type": "BreadcrumbList", "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+                    {"@type": "ListItem", "position": 2, "name": "Products", "item": SITE + "/products"},
+                    {"@type": "ListItem", "position": 3, "name": "Custom Handbags", "item": abs_url(relpath)}]}]}
         elif relpath.startswith("products/"):
             prod = prods.get(relpath.split("/", 1)[1])
             if prod:
@@ -246,6 +323,11 @@ def rewrite_chrome(indexable):
                     path = path[:-5] or "."
                 return match.group("prefix") + path + match.group("suffix")
             s = re.sub(r'(?P<prefix>href=")(?P<path>(?:\.\./|/)?[^"#?]+)\.html(?P<suffix>(?:[?#][^"]*)?")', clean_href, s)
+        # Apply the confirmed commercial facts consistently to generated product copy.
+        s = s.replace("MOQ 300 pcs per style and colourway", "Standard styles from 100 pcs; custom orders from 300 pcs")
+        s = s.replace("MOQ 300 pcs per style", "Standard styles from 100 pcs; custom orders from 300 pcs")
+        s = s.replace("MOQ 300 pcs", "Standard styles from 100 pcs; custom orders from 300 pcs")
+        s = s.replace("A pre-production sample usually takes 7-10 days.", "A pre-production sample usually takes 3-5 days after artwork approval.")
         if relpath.startswith("blog/") and relpath != "blog.html":
             s = add_blog_resource_links(s, p)
         s = add_lazy_loading(s)

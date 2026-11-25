@@ -25,8 +25,14 @@ BLOG_DATES = {
     "eco-bag-material-guide.html": "2026-09-10",
     "eco-bag-printing-qc.html": "2026-09-09",
     "backpack-materials-guide.html": "2026-09-07",
+    "handbag-materials-pu-canvas-linen.html": "2026-11-25",
+    "custom-handbag-development-sketch-to-sample.html": "2026-11-25",
+    "custom-handbag-moq-sampling-lead-time.html": "2026-11-25",
+    "custom-canvas-tote-bags-spec-guide.html": "2026-11-25",
+    "custom-travel-bags-backpacks-oem-guide.html": "2026-11-25",
+    "custom-promotional-bags-corporate-guide.html": "2026-11-25",
 }
-BUILD_DATE = "2026-10-10"
+BUILD_DATE = "2026-11-25"
 
 # --- Search and analytics ------------------------------------------------
 # Paste the tokens issued by Search Console / Bing / GA4 and rebuild the
@@ -45,6 +51,12 @@ BLOG_IMAGES = {
     "eco-bag-printing-qc.html": "assets/img/solution-promo.webp",
     "qc-checklist.html": "assets/img/cat-nonwoven.webp",
     "backpack-materials-guide.html": "assets/img/cat-oxford-fabric.webp",
+    "handbag-materials-pu-canvas-linen.html": "assets/img/why-materials.webp",
+    "custom-handbag-development-sketch-to-sample.html": "assets/img/why-production.webp",
+    "custom-handbag-moq-sampling-lead-time.html": "assets/img/factory-hero.webp",
+    "custom-canvas-tote-bags-spec-guide.html": "assets/img/cat-canvas.webp",
+    "custom-travel-bags-backpacks-oem-guide.html": "assets/img/backpack.webp",
+    "custom-promotional-bags-corporate-guide.html": "assets/img/solution-promo.webp",
 }
 
 # key -> specification block. Fields feed the spec table and the copy blocks.
@@ -329,6 +341,6 @@ CATEGORY_INTRO = {
 
 FAQ_BASE = [
     ("Can you print our logo?", "{branding} - we match Pantone references and supply a print proof before production."),
-    ("How long does sampling take?", "A pre-production sample usually takes 7-10 days. Bulk production runs 15-25 days after you approve the sample."),
+    ("How long does sampling take?", "A pre-production sample usually takes 3-5 days after artwork approval. Bulk production runs 15-25 days after you approve the sample."),
     ("What about quality control?", "Every order passes an in-line check, a handle or load test and a final AQL inspection. Inspection reports and photos are shared before shipment."),
 ]

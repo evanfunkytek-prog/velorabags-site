@@ -19,7 +19,7 @@ def last_modified(relpath):
     date = ""
     try:
         out = subprocess.run(
-            ["git", "log", "-1", "--format=%cs", "--", relpath.replace("\\", "/")],
+            ["git", "-c", "safe.directory=" + REPO_ROOT, "log", "-1", "--format=%cs", "--", relpath.replace("\\", "/")],
             cwd=REPO_ROOT, capture_output=True, text=True, timeout=15)
         date = out.stdout.strip()
     except Exception:

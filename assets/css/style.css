@@ -438,3 +438,13 @@ body{background:#fff}
 .form-status.is-error{background:#fdf1ee;border:1px solid #f0cfc7;color:#8a2f1e}
 .form-status a{color:inherit;text-decoration:underline}
 form.is-sending button[type=submit]{opacity:.7;cursor:progress}
+
+/* verlora-mobile-tables */
+@media (max-width:640px){
+  .article-body table{min-width:0;border:0}
+  .article-body table thead{display:none}
+  .article-body table tr{display:block;border-bottom:1px solid var(--line,#e6e2d8);padding:14px 0}
+  .article-body table tr:last-child{border-bottom:0}
+  .article-body table td{display:flex;gap:14px;border:0;padding:5px 0;font-size:1rem;line-height:1.5}
+  .article-body table td::before{content:attr(data-label);flex:0 0 38%;font-weight:600;opacity:.72}
+}

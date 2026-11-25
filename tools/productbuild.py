@@ -76,7 +76,7 @@ def cat_attrs(prod):
         ("Branding", cat["branding"]),
         ("Handles &amp; hardware", cat["handles"]),
         ("Size range", cat["sizes"]),
-        ("MOQ", "300 pcs per style and colourway"),
+        ("MOQ", "Standard styles from 100 pcs; custom orders from 300 pcs"),
         ("Lead time", "15-25 days after sample approval"),
         ("Packing &amp; testing", "Polybag + export carton. " + cat["testing"]),
     ]
@@ -90,7 +90,7 @@ def pdp_main(prod, p, lead, s):
     qenc = urllib.parse.quote(name, safe="")
     hero_rows = [
         ("Material", cat["material"].split(",")[0], ICON_BOX),
-        ("MOQ", "300 pcs per style", ICON_STACK),
+        ("MOQ", "100 pcs standard; 300 pcs custom", ICON_STACK),
         ("Lead time", "15-25 days", ICON_CLOCK),
     ]
     if BOILERPLATE in lead or not lead:
@@ -102,8 +102,8 @@ def pdp_main(prod, p, lead, s):
         config_card("Branding & hardware",
                     cat["branding"] + ". " + cat["handles"] + ".", ICON_TAG),
         config_card("Order & logistics",
-                    "MOQ 300 pcs per style. Lead time 15-25 days after sample approval. "
-                    "Polybag and export carton packing as standard.", ICON_TRUCK),
+                    "Standard styles from 100 pcs; custom orders from 300 pcs. "
+                    "Lead time 15-25 days after sample approval. Polybag and export carton packing as standard.", ICON_TRUCK),
     ]
     faq = [("Can you make %s in a custom size?" % name,
             cat["sizes"] + ". Send a drawing or a reference sample and our pattern room will match it."),
@@ -227,12 +227,17 @@ def build_catalog():
         '<button class="tab-btn{act}" data-filter="{key}" type="button">{label}</button>'.format(
             act=" is-active" if key == "all" else "", key=key, label=label)
         for key, label in CATEGORY_TABS)
+    featured = """      <article class="category-card reveal p-item" data-cat="bags handbags">
+        <div class="category-media"><a href="custom-handbags"><img src="assets/img/tote.webp" alt="Custom Handbags &amp; Fashion Totes" width="480" height="440"></a></div>
+        <div class="category-body"><h3>Custom Handbags &amp; Fashion Totes</h3><a href="custom-handbags" class="category-link">Explore &rarr;</a></div>
+      </article>"""
     main = """<main>
 <section class="page-hero">
   <div class="container">
     <span class="eyebrow">OEM / ODM catalog</span>
-    <h1>Custom Travel, Reusable &amp; Promotional Bag Programmes</h1>
-    <p class="lead">Explore custom travel bags, duffels, backpacks, totes and reusable bag programmes. Every style is a starting point: we re-engineer materials, hardware and branding to fit your brand and target price.</p>
+    <h1>Custom Handbags, Travel &amp; Reusable Bag Programmes</h1>
+    <p class="lead">Explore custom handbags, totes, crossbody bags, travel bags and reusable bag programmes. Every style is a starting point: we re-engineer materials, hardware and branding to fit your brand and target price.</p>
+    <p class="lead" style="font-size:.95rem">Start with <a href="custom-handbags">custom handbags and fashion totes</a>, or browse the full catalog below.</p>
   </div>
 </section>
 
@@ -242,6 +247,7 @@ def build_catalog():
       {tabs}
     </div>
     <div class="product-grid">
+{featured}
 {cards}
     </div>
     <p class="empty-state">No styles in this category yet &mdash; <a href="quote.html">ask us, we probably make it</a>.</p>
@@ -268,7 +274,7 @@ def build_catalog():
     <a class="btn" href="quote.html">Get a quote</a>
   </div>
 </section>
-</main>""".format(tabs=tabs, cards="\n".join(cards), count=len(prods))
+</main>""".format(tabs=tabs, featured=featured, cards="\n".join(cards), count=len(prods) + 1)
     s = read(rp("products.html"))
     s = MAIN_RE.sub(lambda _m: main, s, count=1)
     write(rp("products.html"), s)

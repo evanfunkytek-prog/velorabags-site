@@ -197,6 +197,7 @@ def build_css():
 # ---------------------------------------------------------------- templates
 
 NAV_PRODUCTS = [
+    ("custom-handbags", "Custom Handbags", '<path d="M4 8h16l-1 12H5L4 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>'),
     ("jute-bags", "Jute Bags", '<rect x="3" y="7" width="18" height="12" rx="2"/><path d="M9 7v-2a3 3 0 0 1 6 0v2"/>'),
     ("canvas-bags", "Canvas Bags", '<path d="M4 7h16l-1 13H5L4 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/>'),
     ("non-woven-bags", "Non-Woven Bags", '<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V6a3 3 0 0 1 6 0v1"/>'),
@@ -213,9 +214,11 @@ NAV_PRODUCTS = [
 
 
 def header(p):
+    def nav_href(slug):
+        return p + ("custom-handbags" if slug == "custom-handbags" else "products/" + slug)
     links = "\n".join(
-        '        <a href="{p}products/{slug}" class="menu-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">{icon}</svg> {name}</a>'.format(
-            p=p, slug=slug, icon=icon, name=name)
+        '        <a href="{href}" class="menu-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">{icon}</svg> {name}</a>'.format(
+            href=nav_href(slug), icon=icon, name=name)
         for slug, name, icon in NAV_PRODUCTS)
     return """<header class="site-header" data-header>
   <div class="container header-inner">
